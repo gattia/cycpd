@@ -20,6 +20,8 @@ class expectation_maximization_registration(object):
         self.A_times = []
         self.B_times = []
         self.solve_times = []
+        self.time_to_initialize_deformable_registration = 0
+        self.time_to_initiate_registration = 0
 
         self.X              = X
         self.Y              = Y
@@ -36,16 +38,21 @@ class expectation_maximization_registration(object):
         self.P1             = np.zeros((self.M, ))
         self.Np             = 0.
 
+
     def register(self, callback=lambda **kwargs: None):
+        tic = time.time()
         self.transform_point_cloud()
         self.sigma2 = initialize_sigma2(self.X, self.TY)
         self.q = -self.err - self.N * self.D/2 * np.log(self.sigma2)
+        toc = time.time()
+        self.time_to_initiate_registration = toc-tic
         while self.iteration < self.max_iterations and self.err > self.tolerance:
             self.iterate()
             if callable(callback):
                 kwargs = {'iteration': self.iteration, 'error': self.err, 'X': self.X, 'Y': self.TY}
                 callback(**kwargs)
-
+        print('Time to initialize EM registration: {}'.format(self.time_to_initiate_registration))
+        print('Time to initialize Deformable registration: {}'.format(self.time_to_initialize_deformable_registration))
         print('Average Expectation Times: {} +/- {}'.format(np.mean(self.expectation_times),
                                                             np.std(self.expectation_times)))
         print('Average Maximization Times: {} +/- {}'.format(np.mean(self.maximization_times),
@@ -58,12 +65,15 @@ class expectation_maximization_registration(object):
         print('Average Update Variance Times: {} +/- {}'.format(np.mean(self.update_variance_times),
                                                           np.std(self.update_variance_times)))
         print('')
-        print('Average A Times: {} +/- {}'.format(np.mean(self.A_times),
-                                                                 np.std(self.A_times)))
-        print('Average B Times: {} +/- {}'.format(np.mean(self.B_times),
-                                                          np.std(self.B_times)))
-        print('Average Solve Times: {} +/- {}'.format(np.mean(self.solve_times),
-                                                                np.std(self.solve_times)))
+        if self.low_rank is False:
+            print('Average A Times: {} +/- {}'.format(np.mean(self.A_times),
+                                                                     np.std(self.A_times)))
+            print('Average B Times: {} +/- {}'.format(np.mean(self.B_times),
+                                                              np.std(self.B_times)))
+            print('Average Solve Times: {} +/- {}'.format(np.mean(self.solve_times),
+                                                                    np.std(self.solve_times)))
+        print('Number of iterations used: {}'.format(self.iteration))
+        print('Error at time of finish: {}'.format(self.err))
 
         return self.TY, self.get_registration_parameters()
 
@@ -104,6 +114,12 @@ class expectation_maximization_registration(object):
         self.update_variance()
         toc = time.time()
         self.update_variance_times.append(toc - tic)
+
+        # print(self.P.shape)
+        # print(self.P1.shape)
+        # print(self.Pt1.shape)
+        # print(self.Np)
+
 
 
 # cdef class expectation_maximization_registration(object):

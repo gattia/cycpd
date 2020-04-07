@@ -5,19 +5,17 @@ from cycpd import gaussian_kernel, deformable_registration
 import time
 
 def test_2D():
-    tic = time.time()
     X = np.loadtxt('../data/fish_target.txt')
     Y = np.loadtxt('../data/fish_source.txt')
 
+    tic = time.time()
     reg = deformable_registration(**{ 'X': X, 'Y': Y })
     TY, _ = reg.register()
-    assert_array_almost_equal(X, TY, decimal=1)
     toc = time.time()
+    assert_array_almost_equal(X, TY, decimal=1)
     print('Test 2D Deformable took on fish took: {}'.format(toc - tic))
 
 def test_3D():
-    tic = time.time()
-
     X = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
     # fish_target = np.loadtxt('../data/fish_target.txt')
     # X1 = np.zeros((fish_target.shape[0], fish_target.shape[1] + 1))
@@ -34,11 +32,19 @@ def test_3D():
     # Y2[:,:-1] = fish_source
     # Y = np.vstack((Y1, Y2))
 
+    tic = time.time()
     reg = deformable_registration(**{ 'X': X, 'Y':Y })
+    toc = time.time()
+    time_setup_deformable = toc - tic
+    tic = time.time()
     TY, _ = reg.register()
     # assert_array_almost_equal(TY, X, decimal=0)
     toc = time.time()
-    print('Test 3D Deformable took on fish took: {}'.format(toc - tic))
+    time_do_registration = toc - tic
+    print('Test 3D Deformable setup registration time: {}'.format(time_setup_deformable))
+    print('Test 3D Deformable do registration time: {}'.format(time_do_registration))
+    print('Test 3D Deformable took on fish took: {}'.format(time_do_registration + time_setup_deformable))
+
 
 
 if __name__ == "__main__":
