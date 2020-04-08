@@ -3,6 +3,7 @@ import numpy as np
 cimport cython
 from libc.math cimport exp as c_exp
 from libc.math cimport pow as c_pow
+from libc.math cimport log as c_log
 
 # from libcpp.vector cimport vector
 
@@ -123,6 +124,81 @@ def expectation(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, i
     # tic = time.time()
 
     return P, Pt1, P1, Np
+
+@cython.boundscheck(False)  # Deactivate bounds checking
+@cython.wraparound(False)   # Deactivate negative indexing.
+@cython.cdivision(True) # Do division using C?
+def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):
+    # TY is MxD (same as Y - it is just transformed Y). M = rows of points Y, and D is dimensions.
+    # tic = time.time()
+    # cdef Py_ssize_t x_i_shape, x_j_shape, y_i_shape, y_j_shape
+    if my_type is double:
+        dtype = np.double
+
+    cdef Py_ssize_t n, m, d  # i, j, k
+
+    cdef double ksig, diff, w_tmp, den, tmp_total, Np, E # den = sp in original matlab, tmp_total = razn
+    cdef double [:] temp_x
+    temp_x = np.zeros(D, dtype=np.double)
+    cdef double [:] temp_x_view = temp_x
+
+    ksig = -2.0 * sigma2
+    w_tmp = (w * M * c_pow(-ksig * 3.14159265358979,0.5*D))/((1-w)*N) # c in the original manuscript
+
+    cdef my_type[:, :] X_view = X
+    cdef my_type[:, :] TY_view = TY
+
+     # Make P array
+    # cdef my_type[:] P
+    P = np.zeros(M, dtype=dtype)
+    cdef my_type[:] P_view = P
+
+    # Make P1 array
+    # cdef my_type[:] P1
+    P1= np.zeros(M, dtype=dtype)
+    cdef my_type[:] P1_view = P1
+
+    # Make Pt1 array
+    # cdef my_type[:] Pt1
+    Pt1= np.zeros(N, dtype=dtype)
+    cdef my_type[:] Pt1_view = Pt1
+
+    # Make Pt1 array
+    # cdef my_type[:, :] Px
+    Px= np.zeros((M, D), dtype=dtype)
+    cdef my_type[:, :] Px_view = Px
+
+
+    for n in range(N):
+        den = 0
+        for m in range(M):
+            tmp_total = 0
+            for d in range(D):
+                diff = X_view[n, d] - TY_view[m, d]
+                diff = diff * diff
+                tmp_total += diff
+            P_view[m] = c_exp(tmp_total/ksig)
+            den += P_view[m]
+        den += w_tmp
+        Pt1_view[n] = 1-w_tmp/den
+
+        for d in range(D):
+            temp_x_view[d] = X_view[n, d] / den
+
+        for m in range(M):
+            P1_view[m] += P_view[m] / den
+
+            for d in range(D):
+                Px_view[m, d] += temp_x_view[d] * P_view[m]
+        E += -c_log(den)
+
+    Np = 0
+    for m in range(M):
+        Np += P1_view[m]
+
+    E += D * Np * c_log(sigma2)/2
+
+    return P1, Pt1, Px, Np, E
 
 
 

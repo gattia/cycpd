@@ -45,7 +45,7 @@ class deformable_registration(expectation_maximization_registration):
             self.inv_S = np.diag(1./self.S)
             self.S = np.diag(self.S)
         toc = time.time()
-        self.time_to_initialize_deformable_registration = toc - tic
+        self.time_to_initialize_registration = toc - tic
 
     def update_transform(self):
         if self.low_rank is False:
@@ -54,7 +54,7 @@ class deformable_registration(expectation_maximization_registration):
             toc = time.time()
             self.A_times.append(toc-tic)
             tic = time.time()
-            B = np.dot(self.P, self.X) - np.dot(np.diag(self.P1), self.Y)
+            B = self.PX - np.dot(np.diag(self.P1), self.Y)
             toc = time.time()
             self.B_times.append(toc - tic)
             tic = time.time()
@@ -64,14 +64,17 @@ class deformable_registration(expectation_maximization_registration):
         else:
             dP = np.diag(self.P1)
             dPQ = np.matmul(dP, self.Q)
-            PX = np.matmul(self.P, self.X)
-            F = PX - np.matmul(dP, self.Y)  # Need to figure out how to get PX....
-            # The below is still using * form matlab (so they should be matrix multiples, need to fix)
+            F = self.PX - np.matmul(dP, self.Y)
+
             self.W = 1 / (self.alpha * self.sigma2) * (F - np.matmul(dPQ, (
                 np.linalg.solve((self.alpha * self.sigma2 * self.inv_S + np.matmul(self.Q.T, dPQ)), (np.matmul(self.Q.T, F))))))
-
-
-
+            QtW = np.matmul(self.Q.T, self.W)
+            self.E = self.E + self.alpha/2 * np.trace(np.matmul(QtW.T, np.matmul(self.S, QtW)))
+            # self.err = abs((self.E - self.E_old) / self.E)
+            self.err = abs(self.E - self.E_old)
+            # The absolute difference is more conservative (does more iterations) than the line above it which
+            # is calculating the normalized change in the E(L). This calculation was changed to match the matlab
+            # code created for low_rank matrices.
 
     def transform_point_cloud(self, Y=None):
         if self.low_rank is False:
@@ -88,17 +91,14 @@ class deformable_registration(expectation_maximization_registration):
                 return Y + np.matmul(self.Q, np.matmul(self.S, np.matmul(self.Q.T, self.W)))
 
     def update_variance(self):
-        qprev = self.sigma2
-
-        xPx      = np.dot(np.transpose(self.Pt1), np.sum(np.multiply(self.X, self.X), axis=1))
-        yPy      = np.dot(np.transpose(self.P1),  np.sum(np.multiply(self.TY, self.TY), axis=1))
-        trPXY    = np.sum(np.multiply(self.TY, np.dot(self.P, self.X)))
-
-        self.sigma2 = (xPx - 2 * trPXY + yPy) / (self.Np * self.D)
+        self.sigma2_prev = self.sigma2
+        A = np.sum(np.square(self.X) * self.Pt1[:, None])
+        B = np.sum(np.square(self.TY) * self.P1[:, None])
+        C = 2 * np.trace(np.matmul(self.PX.T, self.TY))
+        self.sigma2 = abs( A + B - C ) / (self.Np * self.D)
 
         if self.sigma2 <= 0:
             self.sigma2 = self.tolerance / 10
-        self.err = np.abs(self.sigma2 - qprev)
 
     def get_registration_parameters(self):
         return self.G, self.W

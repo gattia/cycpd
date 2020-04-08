@@ -1,2 +1,5 @@
 .idea
 .DS_Store
+build
+cycpd.egg-info
+dist

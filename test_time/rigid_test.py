@@ -15,6 +15,7 @@ def test_2D():
     X = np.dot(Y, R) + np.tile(t, (np.shape(Y)[0], 1))
 
     reg = rigid_registration(**{ 'X': X, 'Y':Y })
+    reg.low_rank = True
     TY, (s_reg, R_reg, t_reg) = reg.register()
     assert_almost_equal(1.0, s_reg)
     assert_array_almost_equal(R, R_reg)
@@ -37,6 +38,7 @@ def test_3D():
     X = np.dot(Y, R) + np.tile(t, (np.shape(Y)[0], 1))
 
     reg = rigid_registration(**{ 'X': X, 'Y':Y })
+    reg.low_rank = True
     TY, (s_reg, R_reg, t_reg) = reg.register()
     assert_almost_equal(1.0, s_reg)
     assert_array_almost_equal(R, R_reg)
@@ -45,6 +47,7 @@ def test_3D():
 
     toc = time.time()
     print('Test 3D Rigid took on knee with 5k points took: {}'.format(toc - tic))
+
 
 
 

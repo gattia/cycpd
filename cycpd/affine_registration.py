@@ -1,52 +1,47 @@
 from builtins import super
 import numpy as np
+import time
 from .expectation_maximization_registration import expectation_maximization_registration
 
-# cdef class affine_registration(expectation_maximization_registration):
 class affine_registration(expectation_maximization_registration):
-
-    # cdef double[:,:] B
-    # cdef double[:,:] t
-
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        tic = time.time()
         self.B = np.eye(self.D)
-        self.t = np.zeros((1, self.D))
+        self.t = np.zeros(self.D)
+        self.B1 = None
+        self.B2 = None
+
+        toc = time.time()
+        self.time_to_initialize_registration = toc - tic
 
     def update_transform(self):
-        muX = np.divide(np.sum(np.dot(self.P, self.X), axis=0), self.Np)
-        muY = np.divide(np.sum(np.dot(np.transpose(self.P), self.Y), axis=0), self.Np)
+        self.muX = np.divide(np.matmul(self.X.T, self.Pt1), self.Np)
+        self.muY = np.divide(np.matmul(self.Y.T, self.P1),
+                             self.Np)  # changed previous code from PyCPD because we no longer store self.P
 
-        self.XX = self.X - np.tile(muX, (self.N, 1))
-        YY      = self.Y - np.tile(muY, (self.M, 1))
+        self.B1 = np.matmul(self.PX.T, self.Y) - self.Np * np.matmul(self.muX[:,None], self.muY[:,None].T)
+        self.B2 = np.matmul((self.Y * self.P1[:,None]).T, self.Y) - self.Np * np.matmul(self.muY[:, None], self.muY[:,None].T)
+        self.B = np.linalg.solve(self.B2.T, self.B1.T).T
 
-        self.A = np.dot(np.transpose(self.XX), np.transpose(self.P))
-        self.A = np.dot(self.A, YY)
+        self.t = np.squeeze(self.muX[:,None] - np.matmul(self.B, self.muY[:,None]))
 
-        self.YPY = np.dot(np.transpose(YY), np.diag(self.P1))
-        self.YPY = np.dot(self.YPY, YY)
-
-        self.B = np.linalg.solve(np.transpose(self.YPY), np.transpose(self.A))
-        self.t = np.transpose(muX) - np.dot(np.transpose(self.B), np.transpose(muY))
+        self.err = abs(self.E - self.E_old)
 
     def transform_point_cloud(self, Y=None):
         if Y is None:
-            self.TY = np.dot(self.Y, self.B) + np.tile(self.t, (self.M, 1))
+            self.TY = np.dot(self.Y, self.B.T) + self.t
             return
         else:
-            return np.dot(Y, self.B) + np.tile(self.t, (Y.shape[0], 1))
+            return np.dot(Y, self.B.T) + self.t
 
     def update_variance(self):
-        qprev = self.q
-
-        trAB     = np.trace(np.dot(self.A, self.B))
-        xPx      = np.dot(np.transpose(self.Pt1), np.sum(np.multiply(self.XX, self.XX), axis =1))
-        trBYPYP  = np.trace(np.dot(np.dot(self.B, self.YPY), self.B))
-        self.q   = (xPx - 2 * trAB + trBYPYP) / (2 * self.sigma2) + self.D * self.Np/2 * np.log(self.sigma2)
-        self.err = np.abs(self.q - qprev)
-
-        self.sigma2 = (xPx - trAB) / (self.Np * self.D)
+        self.sigma2_prev = self.sigma2
+        A = np.sum(np.square(self.X) * self.Pt1[:,None])
+        B = self.Np * np.matmul(self.muX[:,None].T, self.muX[:,None])
+        C = np.trace(np.matmul(self.B1, self.B.T))
+        self.sigma2 = abs(A - B - C)/(self.Np * self.D)
 
         if self.sigma2 <= 0:
             self.sigma2 = self.tolerance / 10

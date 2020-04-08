@@ -14,23 +14,19 @@ def test_2D():
     toc = time.time()
     assert_array_almost_equal(X, TY, decimal=1)
     print('Test 2D Deformable took on fish took: {}'.format(toc - tic))
+    print('Registration Error: {}'.format(reg.err))
+    print('Number of iterations: {}'.format(reg.iteration))
 
 def test_3D():
     X = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
-    # fish_target = np.loadtxt('../data/fish_target.txt')
-    # X1 = np.zeros((fish_target.shape[0], fish_target.shape[1] + 1))
-    # X1[:,:-1] = fish_target
-    # X2 = np.ones((fish_target.shape[0], fish_target.shape[1] + 1))
-    # X2[:,:-1] = fish_target
-    # X = np.vstack((X1, X2))
 
-    Y = np.loadtxt('../data/surface_points_bone_2_5k_points.npy')
-    # fish_source = np.loadtxt('../data/fish_source.txt')
-    # Y1 = np.zeros((fish_source.shape[0], fish_source.shape[1] + 1))
-    # Y1[:,:-1] = fish_source
-    # Y2 = np.ones((fish_source.shape[0], fish_source.shape[1] + 1))
-    # Y2[:,:-1] = fish_source
-    # Y = np.vstack((Y1, Y2))
+    # Below are points from a completely different knee that were already rigidly registered to X
+    # If there isnt something to make them "somewhat" close to one another, then the registration fails.
+    # Therefore, this first step was performed to improve testing.
+    Y = np.loadtxt('../data/surface_points_bone_2_rigid_register_to_1_5k_points.npy')
+
+    # These will not perfectly align and they will not even be "done" when we get to iteration 100.
+    # But this is a good starting point test.
 
     tic = time.time()
     reg = deformable_registration(**{ 'X': X, 'Y':Y })
@@ -44,6 +40,11 @@ def test_3D():
     print('Test 3D Deformable setup registration time: {}'.format(time_setup_deformable))
     print('Test 3D Deformable do registration time: {}'.format(time_do_registration))
     print('Test 3D Deformable took on fish took: {}'.format(time_do_registration + time_setup_deformable))
+
+    print('Registration Error: {}'.format(reg.err))
+    print('Number of iterations: {}'.format(reg.iteration))
+    # print(reg.sigma2)
+    # print(reg.Np)
 
 
 
