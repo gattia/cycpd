@@ -1,7 +1,7 @@
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
 import time
-from cycpd.cython_functions import *
+from cython_functions import *
 
 class expectation_maximization_registration(object):
 

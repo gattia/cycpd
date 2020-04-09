@@ -8,7 +8,7 @@ try:
     from Cython.Build import cythonize
 
     ext_modules = cythonize([
-        Extension("cycpd.cython_functions", ["cycpd/cython/cython_functions.pyx"])
+        Extension("cython_functions", ["cycpd/cython/cython_functions.pyx"])
     ])
 
 except ImportError:
