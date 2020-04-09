@@ -6,10 +6,11 @@ Update to the PyCPD module to include Cython to try and improve performance
 
 # Introduction / Background
 
-Please see here (https://github.com/siavashk/pycpd) for Pure Numpy implementation 
-Please see here (https://tinyurl.com/tph4u7e) for original manuscript describing CPD
-Please see here (https://sites.google.com/site/myronenko/research/cpd) for original code, mostly for Matlab
-Please see here (https://github.com/gadomski/cpd) for a C++ implementation
+Please see here (https://github.com/siavashk/pycpd) for Pure Numpy implementation <br>
+Please see here (https://tinyurl.com/tph4u7e) for original manuscript describing CPD <br>
+Please see here (https://sites.google.com/site/myronenko/research/cpd) for original code (Matlab) that you can request <br>
+Please see here for Matlab code stored on github by secondary source (https://github.com/markeroon/matlab-computer-vision-routines/tree/master/third_party/CoherentPointDrift)<br>
+Please see here (https://github.com/gadomski/cpd) for a C++ implementation<br>
 
 
 This implementation aims to speed up the PyCPD implementation of CPD. First we added cython functions to compute the expectation step of the EM algorithm. This was able to cut E step times in approximately 1/3. The E step appears to be the major bottle neck of the PyCPD rigid and affine registration methods. Therefore, this method reduces registration of those methods to be ~1/3.
