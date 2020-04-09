@@ -71,6 +71,18 @@ python knee_affine.py
 python knee_deformable.py
 ```
 
+## Rigid
+![](/gifs/Rigid_knee.gif)
+
+
+## Affine
+![](/gifs/Affine_knee.gif)
+
+
+## Non-Rigid (Deformable)
+![](/gifs/Deformable_knee.gif)
+
+
 # Tests
 Further tests that assert if the proper rotation/translation etc. was recovered using CPD and exactly how long those took can be found in the folder test_time and may be run by navigating there in the commandline and running and of the following:
 

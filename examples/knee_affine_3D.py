@@ -4,7 +4,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from cycpd import affine_registration
 import numpy as np
 
-def visualize(iteration, error, X, Y, ax, tilt=25, rotation_factor=5):
+def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):
     plt.cla()
     ax[0].cla()
     ax[1].cla()
@@ -22,6 +22,7 @@ def visualize(iteration, error, X, Y, ax, tilt=25, rotation_factor=5):
     ax[1].view_init(tilt, rotation_factor * iteration)
 
     plt.draw()
+    # fig.savefig('affine_{:04}.tiff'.format(iteration)) # Used for making gif.
     plt.pause(0.001)
 
 def main():
@@ -49,7 +50,7 @@ def main():
     ax1 = fig.add_subplot(121, projection='3d')
     ax2 = fig.add_subplot(122, projection='3d')
     ax = [ax1, ax2]
-    callback = partial(visualize, ax=ax)
+    callback = partial(visualize, ax=ax, fig=fig)
 
     reg = affine_registration(**{ 'X': X, 'Y': Y })
     reg.register(callback)
