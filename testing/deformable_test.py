@@ -2,7 +2,6 @@ import pytest
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
 from cycpd import gaussian_kernel, deformable_registration
-import matplotlib.pyplot as plt
 
 def test_2D():
     try:
