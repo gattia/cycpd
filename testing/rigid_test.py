@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
-from pycpd import rigid_registration
+from cycpd import rigid_registration
 
 def test_2D():
     theta = np.pi / 6.0
@@ -14,7 +14,7 @@ def test_2D():
         Y = np.loadtxt('../data/fish_target.txt')
     X = np.dot(Y, R) + np.tile(t, (np.shape(Y)[0], 1))
 
-    reg = rigid_registration(**{ 'X': X, 'Y':Y })
+    reg = rigid_registration(**{'X': X, 'Y': Y, 'verbose': False})
     TY, (s_reg, R_reg, t_reg) = reg.register()
     assert_almost_equal(1.0, s_reg)
     assert_array_almost_equal(R, R_reg)
@@ -32,7 +32,7 @@ def test_3D():
         Y = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
     X = np.dot(Y, R) + np.tile(t, (np.shape(Y)[0], 1))
 
-    reg = rigid_registration(**{'X': X, 'Y': Y})
+    reg = rigid_registration(**{'X': X, 'Y': Y, 'verbose': False})
     reg.low_rank = True
     TY, (s_reg, R_reg, t_reg) = reg.register()
     assert_almost_equal(1.0, s_reg)
