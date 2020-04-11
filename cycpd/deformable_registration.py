@@ -100,5 +100,7 @@ class deformable_registration(expectation_maximization_registration):
         if self.sigma2 <= 0:
             self.sigma2 = self.tolerance / 10
 
+        # self.err = abs(self.sigma2_prev - self.sigma2)
+
     def get_registration_parameters(self):
         return self.G, self.W

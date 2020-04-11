@@ -48,23 +48,23 @@ def expectation(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, i
         dtype = np.longlong
 
 
-    cdef my_type[:, :] P
+    # cdef my_type[:, :] P
     P = np.zeros((M, N), dtype=dtype)
     cdef my_type[:,:] P_view = P
 
-    cdef my_type[:] den
+    # cdef my_type[:] den
     den = np.zeros(x_i_shape, dtype=dtype)
     cdef my_type[:] den_view = den
 
-    cdef my_type[:] den_tmp
+    # cdef my_type[:] den_tmp
     den_tmp = np.zeros(x_i_shape, dtype=dtype)
     cdef my_type[:] den_tmp_view = den_tmp
 
-    cdef my_type[:] Pt1
+    # cdef my_type[:] Pt1
     Pt1 = np.zeros(N, dtype=dtype)
     cdef my_type[:] Pt1_view = Pt1
 
-    cdef my_type[:] P1
+    # cdef my_type[:] P1
     P1 = np.zeros(M, dtype=dtype)
     cdef my_type[:] P1_view = P1
 
@@ -138,7 +138,7 @@ def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N,
     cdef Py_ssize_t n, m, d  # i, j, k
 
     cdef double ksig, diff, w_tmp, den, tmp_total, Np, E # den = sp in original matlab, tmp_total = razn
-    cdef double [:] temp_x
+    # cdef double [:] temp_x
     temp_x = np.zeros(D, dtype=np.double)
     cdef double [:] temp_x_view = temp_x
 

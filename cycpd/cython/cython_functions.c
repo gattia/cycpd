@@ -9,12 +9,12 @@
         "include_dirs": [
             "cycpd/cython"
         ],
-        "name": "cycpd.cython_functions",
+        "name": "cython_functions",
         "sources": [
             "cycpd/cython/cython_functions.pyx"
         ]
     },
-    "module_name": "cycpd.cython_functions"
+    "module_name": "cython_functions"
 }
 END: Cython Metadata */
 
@@ -608,8 +608,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__cycpd__cython_functions
-#define __PYX_HAVE_API__cycpd__cython_functions
+#define __PYX_HAVE__cython_functions
+#define __PYX_HAVE_API__cython_functions
 /* Early includes */
 #include <math.h>
 #include "vfastexp.h"
@@ -1804,10 +1804,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 
-/* MemviewDtypeToObject.proto */
-static CYTHON_INLINE PyObject *__pyx_memview_get_double(const char *itemp);
-static CYTHON_INLINE int __pyx_memview_set_double(const char *itemp, PyObject *obj);
-
 /* MemviewSliceCopyTemplate.proto */
 static __Pyx_memviewslice
 __pyx_memoryview_copy_new_contig(const __Pyx_memviewslice *from_mvs,
@@ -1857,7 +1853,7 @@ static PyObject *__pyx_memoryviewslice_assign_item_from_object(struct __pyx_memo
 
 /* Module declarations from 'libc.math' */
 
-/* Module declarations from 'cycpd.cython_functions' */
+/* Module declarations from 'cython_functions' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -1903,11 +1899,11 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
-#define __Pyx_MODULE_NAME "cycpd.cython_functions"
-extern int __pyx_module_is_main_cycpd__cython_functions;
-int __pyx_module_is_main_cycpd__cython_functions = 0;
+#define __Pyx_MODULE_NAME "cython_functions"
+extern int __pyx_module_is_main_cython_functions;
+int __pyx_module_is_main_cython_functions = 0;
 
-/* Implementation of 'cycpd.cython_functions' */
+/* Implementation of 'cython_functions' */
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
@@ -2045,6 +2041,7 @@ static const char __pyx_k_allocate_buffer[] = "allocate_buffer";
 static const char __pyx_k_dtype_is_object[] = "dtype_is_object";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_cython_functions[] = "cython_functions";
 static const char __pyx_k_initialize_sigma2[] = "initialize_sigma2";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
@@ -2052,7 +2049,6 @@ static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>";
-static const char __pyx_k_cycpd_cython_functions[] = "cycpd.cython_functions";
 static const char __pyx_k_MemoryView_of_r_at_0x_x[] = "<MemoryView of %r at 0x%x>";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
 static const char __pyx_k_Cannot_index_with_type_s[] = "Cannot index with type '%s'";
@@ -2137,7 +2133,7 @@ static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
 static PyObject *__pyx_kp_s_cycpd_cython_cython_functions_py;
-static PyObject *__pyx_n_s_cycpd_cython_functions;
+static PyObject *__pyx_n_s_cython_functions;
 static PyObject *__pyx_n_s_d;
 static PyObject *__pyx_n_s_defaults;
 static PyObject *__pyx_n_s_den;
@@ -2240,12 +2236,12 @@ static PyObject *__pyx_n_s_x_j_shape;
 static PyObject *__pyx_n_s_y_i_shape;
 static PyObject *__pyx_n_s_y_j_shape;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_5cycpd_16cython_functions_expectation(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults); /* proto */
-static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_TY, double __pyx_v_sigma2, int __pyx_v_M, int __pyx_v_N, int __pyx_v_D, double __pyx_v_w); /* proto */
-static PyObject *__pyx_pf_5cycpd_16cython_functions_2expectation_2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults); /* proto */
-static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_TY, double __pyx_v_sigma2, int __pyx_v_M, int __pyx_v_N, int __pyx_v_D, double __pyx_v_w); /* proto */
-static PyObject *__pyx_pf_5cycpd_16cython_functions_4initialize_sigma2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults); /* proto */
-static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_Y); /* proto */
+static PyObject *__pyx_pf_16cython_functions_expectation(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults); /* proto */
+static PyObject *__pyx_pf_16cython_functions_6expectation(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_TY, double __pyx_v_sigma2, int __pyx_v_M, int __pyx_v_N, int __pyx_v_D, double __pyx_v_w); /* proto */
+static PyObject *__pyx_pf_16cython_functions_2expectation_2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults); /* proto */
+static PyObject *__pyx_pf_16cython_functions_10expectation_2(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_TY, double __pyx_v_sigma2, int __pyx_v_M, int __pyx_v_N, int __pyx_v_D, double __pyx_v_w); /* proto */
+static PyObject *__pyx_pf_16cython_functions_4initialize_sigma2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults); /* proto */
+static PyObject *__pyx_pf_16cython_functions_14initialize_sigma2(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_Y); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -2333,7 +2329,7 @@ static PyObject *__pyx_codeobj__28;
 static PyObject *__pyx_codeobj__35;
 /* Late includes */
 
-/* "cycpd/cython/cython_functions.pyx":20
+/* "cython_functions.pyx":20
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cython.cdivision(True) # Do division using C?
  * def expectation(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):             # <<<<<<<<<<<<<<
@@ -2342,9 +2338,9 @@ static PyObject *__pyx_codeobj__35;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5cycpd_16cython_functions_1expectation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_5cycpd_16cython_functions_1expectation = {"expectation", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5cycpd_16cython_functions_1expectation, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5cycpd_16cython_functions_1expectation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_16cython_functions_1expectation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_16cython_functions_1expectation = {"expectation", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_16cython_functions_1expectation, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_16cython_functions_1expectation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_signatures = 0;
   PyObject *__pyx_v_args = 0;
   PyObject *__pyx_v_kwargs = 0;
@@ -2414,18 +2410,18 @@ static PyObject *__pyx_pw_5cycpd_16cython_functions_1expectation(PyObject *__pyx
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 20, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cycpd.cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5cycpd_16cython_functions_expectation(__pyx_self, __pyx_v_signatures, __pyx_v_args, __pyx_v_kwargs, __pyx_v_defaults);
+  __pyx_r = __pyx_pf_16cython_functions_expectation(__pyx_self, __pyx_v_signatures, __pyx_v_args, __pyx_v_kwargs, __pyx_v_defaults);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5cycpd_16cython_functions_expectation(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults) {
+static PyObject *__pyx_pf_16cython_functions_expectation(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults) {
   PyObject *__pyx_v_dest_sig = NULL;
   Py_ssize_t __pyx_v_i;
   PyTypeObject *__pyx_v_ndarray = 0;
@@ -2808,7 +2804,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_expectation(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
   __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_AddTraceback("cycpd.cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_dest_sig);
@@ -2827,9 +2823,9 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_expectation(CYTHON_UNUSED Py
 }
 
 /* Python wrapper */
-static PyObject *__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_7expectation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_fuse_0__pyx_mdef_5cycpd_16cython_functions_7expectation = {"__pyx_fuse_0expectation", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_7expectation, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_7expectation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_fuse_0__pyx_pw_16cython_functions_7expectation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_fuse_0__pyx_mdef_16cython_functions_7expectation = {"__pyx_fuse_0expectation", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_fuse_0__pyx_pw_16cython_functions_7expectation, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_fuse_0__pyx_pw_16cython_functions_7expectation(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_X = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_TY = { 0, 0, { 0 }, { 0 }, { 0 } };
   double __pyx_v_sigma2;
@@ -2932,18 +2928,18 @@ static PyObject *__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_7expectation(PyO
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("expectation", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 20, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cycpd.cython_functions.expectation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.expectation", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5cycpd_16cython_functions_6expectation(__pyx_self, __pyx_v_X, __pyx_v_TY, __pyx_v_sigma2, __pyx_v_M, __pyx_v_N, __pyx_v_D, __pyx_v_w);
+  __pyx_r = __pyx_pf_16cython_functions_6expectation(__pyx_self, __pyx_v_X, __pyx_v_TY, __pyx_v_sigma2, __pyx_v_M, __pyx_v_N, __pyx_v_D, __pyx_v_w);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_TY, double __pyx_v_sigma2, int __pyx_v_M, int __pyx_v_N, int __pyx_v_D, double __pyx_v_w) {
+static PyObject *__pyx_pf_16cython_functions_6expectation(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_TY, double __pyx_v_sigma2, int __pyx_v_M, int __pyx_v_N, int __pyx_v_D, double __pyx_v_w) {
   Py_ssize_t __pyx_v_x_i_shape;
   CYTHON_UNUSED Py_ssize_t __pyx_v_x_j_shape;
   Py_ssize_t __pyx_v_y_i_shape;
@@ -2958,15 +2954,15 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   double __pyx_v_two_sigma2;
   double __pyx_v_machine_error;
   PyObject *__pyx_v_dtype = NULL;
-  __Pyx_memviewslice __pyx_v_P = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_P = NULL;
   __Pyx_memviewslice __pyx_v_P_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_den = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_den = NULL;
   __Pyx_memviewslice __pyx_v_den_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_den_tmp = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_den_tmp = NULL;
   CYTHON_UNUSED __Pyx_memviewslice __pyx_v_den_tmp_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_Pt1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_Pt1 = NULL;
   __Pyx_memviewslice __pyx_v_Pt1_view = { 0, 0, { 0 }, { 0 }, { 0 } };
-  __Pyx_memviewslice __pyx_v_P1 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_P1 = NULL;
   __Pyx_memviewslice __pyx_v_P1_view = { 0, 0, { 0 }, { 0 }, { 0 } };
   CYTHON_UNUSED __Pyx_memviewslice __pyx_v_X_view = { 0, 0, { 0 }, { 0 }, { 0 } };
   CYTHON_UNUSED __Pyx_memviewslice __pyx_v_TY_view = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -3014,10 +3010,9 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   Py_ssize_t __pyx_t_40;
   Py_ssize_t __pyx_t_41;
   Py_ssize_t __pyx_t_42;
-  PyObject *__pyx_t_43 = NULL;
   __Pyx_RefNannySetupContext("__pyx_fuse_0expectation", 0);
 
-  /* "cycpd/cython/cython_functions.pyx":27
+  /* "cython_functions.pyx":27
  *     cdef double c, c_divisor
  * 
  *     x_i_shape = X.shape[0]             # <<<<<<<<<<<<<<
@@ -3026,7 +3021,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_x_i_shape = (__pyx_v_X.shape[0]);
 
-  /* "cycpd/cython/cython_functions.pyx":28
+  /* "cython_functions.pyx":28
  * 
  *     x_i_shape = X.shape[0]
  *     x_j_shape = X.shape[1]             # <<<<<<<<<<<<<<
@@ -3035,7 +3030,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_x_j_shape = (__pyx_v_X.shape[1]);
 
-  /* "cycpd/cython/cython_functions.pyx":29
+  /* "cython_functions.pyx":29
  *     x_i_shape = X.shape[0]
  *     x_j_shape = X.shape[1]
  *     y_i_shape = TY.shape[0]             # <<<<<<<<<<<<<<
@@ -3044,7 +3039,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_y_i_shape = (__pyx_v_TY.shape[0]);
 
-  /* "cycpd/cython/cython_functions.pyx":30
+  /* "cython_functions.pyx":30
  *     x_j_shape = X.shape[1]
  *     y_i_shape = TY.shape[0]
  *     y_j_shape = TY.shape[1]             # <<<<<<<<<<<<<<
@@ -3053,7 +3048,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_y_j_shape = (__pyx_v_TY.shape[1]);
 
-  /* "cycpd/cython/cython_functions.pyx":35
+  /* "cython_functions.pyx":35
  *     cdef my_type two_sigma2, neg_tmp_total, machine_error
  * 
  *     two_sigma2 = 2 * sigma2             # <<<<<<<<<<<<<<
@@ -3062,7 +3057,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_two_sigma2 = (2.0 * __pyx_v_sigma2);
 
-  /* "cycpd/cython/cython_functions.pyx":36
+  /* "cython_functions.pyx":36
  * 
  *     two_sigma2 = 2 * sigma2
  *     machine_error = np.finfo(float).eps             # <<<<<<<<<<<<<<
@@ -3096,7 +3091,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_machine_error = __pyx_t_4;
 
-  /* "cycpd/cython/cython_functions.pyx":37
+  /* "cython_functions.pyx":37
  *     two_sigma2 = 2 * sigma2
  *     machine_error = np.finfo(float).eps
  *     c = (2 * np.pi * sigma2)             # <<<<<<<<<<<<<<
@@ -3121,7 +3116,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_c = __pyx_t_4;
 
-  /* "cycpd/cython/cython_functions.pyx":38
+  /* "cython_functions.pyx":38
  *     machine_error = np.finfo(float).eps
  *     c = (2 * np.pi * sigma2)
  *     c = c_pow(c, D/2)             # <<<<<<<<<<<<<<
@@ -3130,7 +3125,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_c = pow(__pyx_v_c, (__pyx_v_D / 2));
 
-  /* "cycpd/cython/cython_functions.pyx":39
+  /* "cython_functions.pyx":39
  *     c = (2 * np.pi * sigma2)
  *     c = c_pow(c, D/2)
  *     c_divisor = w / (1-w)             # <<<<<<<<<<<<<<
@@ -3139,7 +3134,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_c_divisor = (__pyx_v_w / (1.0 - __pyx_v_w));
 
-  /* "cycpd/cython/cython_functions.pyx":40
+  /* "cython_functions.pyx":40
  *     c = c_pow(c, D/2)
  *     c_divisor = w / (1-w)
  *     c = c * c_divisor             # <<<<<<<<<<<<<<
@@ -3148,7 +3143,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_c = (__pyx_v_c * __pyx_v_c_divisor);
 
-  /* "cycpd/cython/cython_functions.pyx":41
+  /* "cython_functions.pyx":41
  *     c_divisor = w / (1-w)
  *     c = c * c_divisor
  *     c = c * M / N             # <<<<<<<<<<<<<<
@@ -3157,7 +3152,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_c = ((__pyx_v_c * __pyx_v_M) / __pyx_v_N);
 
-  /* "cycpd/cython/cython_functions.pyx":46
+  /* "cython_functions.pyx":46
  *         dtype = np.intc
  *     elif my_type is double:
  *         dtype = np.double             # <<<<<<<<<<<<<<
@@ -3172,9 +3167,9 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __pyx_v_dtype = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":52
+  /* "cython_functions.pyx":52
  * 
- *     cdef my_type[:, :] P
+ *     # cdef my_type[:, :] P
  *     P = np.zeros((M, N), dtype=dtype)             # <<<<<<<<<<<<<<
  *     cdef my_type[:,:] P_view = P
  * 
@@ -3209,25 +3204,24 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 52, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_P = __pyx_t_6;
-  __pyx_t_6.memview = NULL;
-  __pyx_t_6.data = NULL;
+  __pyx_v_P = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":53
- *     cdef my_type[:, :] P
+  /* "cython_functions.pyx":53
+ *     # cdef my_type[:, :] P
  *     P = np.zeros((M, N), dtype=dtype)
  *     cdef my_type[:,:] P_view = P             # <<<<<<<<<<<<<<
  * 
- *     cdef my_type[:] den
+ *     # cdef my_type[:] den
  */
-  __PYX_INC_MEMVIEW(&__pyx_v_P, 0);
-  __pyx_v_P_view = __pyx_v_P;
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_P, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_v_P_view = __pyx_t_6;
+  __pyx_t_6.memview = NULL;
+  __pyx_t_6.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":56
+  /* "cython_functions.pyx":56
  * 
- *     cdef my_type[:] den
+ *     # cdef my_type[:] den
  *     den = np.zeros(x_i_shape, dtype=dtype)             # <<<<<<<<<<<<<<
  *     cdef my_type[:] den_view = den
  * 
@@ -3252,25 +3246,24 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 56, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_den = __pyx_t_7;
-  __pyx_t_7.memview = NULL;
-  __pyx_t_7.data = NULL;
+  __pyx_v_den = __pyx_t_2;
+  __pyx_t_2 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":57
- *     cdef my_type[:] den
+  /* "cython_functions.pyx":57
+ *     # cdef my_type[:] den
  *     den = np.zeros(x_i_shape, dtype=dtype)
  *     cdef my_type[:] den_view = den             # <<<<<<<<<<<<<<
  * 
- *     cdef my_type[:] den_tmp
+ *     # cdef my_type[:] den_tmp
  */
-  __PYX_INC_MEMVIEW(&__pyx_v_den, 0);
-  __pyx_v_den_view = __pyx_v_den;
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_den, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_v_den_view = __pyx_t_7;
+  __pyx_t_7.memview = NULL;
+  __pyx_t_7.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":60
+  /* "cython_functions.pyx":60
  * 
- *     cdef my_type[:] den_tmp
+ *     # cdef my_type[:] den_tmp
  *     den_tmp = np.zeros(x_i_shape, dtype=dtype)             # <<<<<<<<<<<<<<
  *     cdef my_type[:] den_tmp_view = den_tmp
  * 
@@ -3295,25 +3288,24 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_v_den_tmp = __pyx_t_7;
-  __pyx_t_7.memview = NULL;
-  __pyx_t_7.data = NULL;
+  __pyx_v_den_tmp = __pyx_t_5;
+  __pyx_t_5 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":61
- *     cdef my_type[:] den_tmp
+  /* "cython_functions.pyx":61
+ *     # cdef my_type[:] den_tmp
  *     den_tmp = np.zeros(x_i_shape, dtype=dtype)
  *     cdef my_type[:] den_tmp_view = den_tmp             # <<<<<<<<<<<<<<
  * 
- *     cdef my_type[:] Pt1
+ *     # cdef my_type[:] Pt1
  */
-  __PYX_INC_MEMVIEW(&__pyx_v_den_tmp, 0);
-  __pyx_v_den_tmp_view = __pyx_v_den_tmp;
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_den_tmp, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_v_den_tmp_view = __pyx_t_7;
+  __pyx_t_7.memview = NULL;
+  __pyx_t_7.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":64
+  /* "cython_functions.pyx":64
  * 
- *     cdef my_type[:] Pt1
+ *     # cdef my_type[:] Pt1
  *     Pt1 = np.zeros(N, dtype=dtype)             # <<<<<<<<<<<<<<
  *     cdef my_type[:] Pt1_view = Pt1
  * 
@@ -3338,25 +3330,24 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 64, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Pt1 = __pyx_t_7;
-  __pyx_t_7.memview = NULL;
-  __pyx_t_7.data = NULL;
+  __pyx_v_Pt1 = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":65
- *     cdef my_type[:] Pt1
+  /* "cython_functions.pyx":65
+ *     # cdef my_type[:] Pt1
  *     Pt1 = np.zeros(N, dtype=dtype)
  *     cdef my_type[:] Pt1_view = Pt1             # <<<<<<<<<<<<<<
  * 
- *     cdef my_type[:] P1
+ *     # cdef my_type[:] P1
  */
-  __PYX_INC_MEMVIEW(&__pyx_v_Pt1, 0);
-  __pyx_v_Pt1_view = __pyx_v_Pt1;
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_Pt1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_v_Pt1_view = __pyx_t_7;
+  __pyx_t_7.memview = NULL;
+  __pyx_t_7.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":68
+  /* "cython_functions.pyx":68
  * 
- *     cdef my_type[:] P1
+ *     # cdef my_type[:] P1
  *     P1 = np.zeros(M, dtype=dtype)             # <<<<<<<<<<<<<<
  *     cdef my_type[:] P1_view = P1
  * 
@@ -3381,23 +3372,22 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 68, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_v_P1 = __pyx_t_7;
-  __pyx_t_7.memview = NULL;
-  __pyx_t_7.data = NULL;
+  __pyx_v_P1 = __pyx_t_2;
+  __pyx_t_2 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":69
- *     cdef my_type[:] P1
+  /* "cython_functions.pyx":69
+ *     # cdef my_type[:] P1
  *     P1 = np.zeros(M, dtype=dtype)
  *     cdef my_type[:] P1_view = P1             # <<<<<<<<<<<<<<
  * 
  *     cdef my_type[:, :] X_view = X
  */
-  __PYX_INC_MEMVIEW(&__pyx_v_P1, 0);
-  __pyx_v_P1_view = __pyx_v_P1;
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_P1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_v_P1_view = __pyx_t_7;
+  __pyx_t_7.memview = NULL;
+  __pyx_t_7.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":71
+  /* "cython_functions.pyx":71
  *     cdef my_type[:] P1_view = P1
  * 
  *     cdef my_type[:, :] X_view = X             # <<<<<<<<<<<<<<
@@ -3407,7 +3397,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __PYX_INC_MEMVIEW(&__pyx_v_X, 0);
   __pyx_v_X_view = __pyx_v_X;
 
-  /* "cycpd/cython/cython_functions.pyx":72
+  /* "cython_functions.pyx":72
  * 
  *     cdef my_type[:, :] X_view = X
  *     cdef my_type[:, :] TY_view = TY             # <<<<<<<<<<<<<<
@@ -3417,7 +3407,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __PYX_INC_MEMVIEW(&__pyx_v_TY, 0);
   __pyx_v_TY_view = __pyx_v_TY;
 
-  /* "cycpd/cython/cython_functions.pyx":78
+  /* "cython_functions.pyx":78
  *     # tic = time.time()
  * 
  *     for i in range(y_i_shape):             # <<<<<<<<<<<<<<
@@ -3429,7 +3419,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_i = __pyx_t_10;
 
-    /* "cycpd/cython/cython_functions.pyx":80
+    /* "cython_functions.pyx":80
  *     for i in range(y_i_shape):
  *         # print('at j: {}'.format(j))
  *         for j in range(x_i_shape):             # <<<<<<<<<<<<<<
@@ -3441,7 +3431,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_j = __pyx_t_13;
 
-      /* "cycpd/cython/cython_functions.pyx":81
+      /* "cython_functions.pyx":81
  *         # print('at j: {}'.format(j))
  *         for j in range(x_i_shape):
  *             tmp_total = 0             # <<<<<<<<<<<<<<
@@ -3450,7 +3440,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
       __pyx_v_tmp_total = 0.0;
 
-      /* "cycpd/cython/cython_functions.pyx":82
+      /* "cython_functions.pyx":82
  *         for j in range(x_i_shape):
  *             tmp_total = 0
  *             for k in range(y_j_shape):             # <<<<<<<<<<<<<<
@@ -3462,7 +3452,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
         __pyx_v_k = __pyx_t_16;
 
-        /* "cycpd/cython/cython_functions.pyx":83
+        /* "cython_functions.pyx":83
  *             tmp_total = 0
  *             for k in range(y_j_shape):
  *                 tmp_total += c_pow(X[j,k] - TY[i,k], 2.)             # <<<<<<<<<<<<<<
@@ -3476,7 +3466,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
         __pyx_v_tmp_total = (__pyx_v_tmp_total + pow(((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_X.data + __pyx_t_17 * __pyx_v_X.strides[0]) ) + __pyx_t_18 * __pyx_v_X.strides[1]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_TY.data + __pyx_t_19 * __pyx_v_TY.strides[0]) ) + __pyx_t_20 * __pyx_v_TY.strides[1]) )))), 2.));
       }
 
-      /* "cycpd/cython/cython_functions.pyx":84
+      /* "cython_functions.pyx":84
  *             for k in range(y_j_shape):
  *                 tmp_total += c_pow(X[j,k] - TY[i,k], 2.)
  *             P_view[i, j] = c_exp(-tmp_total / two_sigma2)             # <<<<<<<<<<<<<<
@@ -3489,7 +3479,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
     }
   }
 
-  /* "cycpd/cython/cython_functions.pyx":92
+  /* "cython_functions.pyx":92
  *     # tic = time.time()
  * 
  *     for i in range(y_i_shape):             # <<<<<<<<<<<<<<
@@ -3501,7 +3491,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_i = __pyx_t_10;
 
-    /* "cycpd/cython/cython_functions.pyx":93
+    /* "cython_functions.pyx":93
  * 
  *     for i in range(y_i_shape):
  *         for j in range(x_i_shape):             # <<<<<<<<<<<<<<
@@ -3513,7 +3503,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_j = __pyx_t_13;
 
-      /* "cycpd/cython/cython_functions.pyx":94
+      /* "cython_functions.pyx":94
  *     for i in range(y_i_shape):
  *         for j in range(x_i_shape):
  *             den_view[j] = den_view[j] + P_view[i, j]             # <<<<<<<<<<<<<<
@@ -3528,7 +3518,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
     }
   }
 
-  /* "cycpd/cython/cython_functions.pyx":100
+  /* "cython_functions.pyx":100
  *             # else:
  * 
  *     for j in range(x_i_shape):             # <<<<<<<<<<<<<<
@@ -3540,7 +3530,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_j = __pyx_t_10;
 
-    /* "cycpd/cython/cython_functions.pyx":101
+    /* "cython_functions.pyx":101
  * 
  *     for j in range(x_i_shape):
  *         den_view[j] += c             # <<<<<<<<<<<<<<
@@ -3550,7 +3540,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
     __pyx_t_27 = __pyx_v_j;
     *((double *) ( /* dim=0 */ (__pyx_v_den_view.data + __pyx_t_27 * __pyx_v_den_view.strides[0]) )) += __pyx_v_c;
 
-    /* "cycpd/cython/cython_functions.pyx":102
+    /* "cython_functions.pyx":102
  *     for j in range(x_i_shape):
  *         den_view[j] += c
  *         if den_view[j] == 0:             # <<<<<<<<<<<<<<
@@ -3561,7 +3551,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
     __pyx_t_29 = (((*((double *) ( /* dim=0 */ (__pyx_v_den_view.data + __pyx_t_28 * __pyx_v_den_view.strides[0]) ))) == 0.0) != 0);
     if (__pyx_t_29) {
 
-      /* "cycpd/cython/cython_functions.pyx":103
+      /* "cython_functions.pyx":103
  *         den_view[j] += c
  *         if den_view[j] == 0:
  *             den_view[j] = machine_error             # <<<<<<<<<<<<<<
@@ -3571,7 +3561,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
       __pyx_t_30 = __pyx_v_j;
       *((double *) ( /* dim=0 */ (__pyx_v_den_view.data + __pyx_t_30 * __pyx_v_den_view.strides[0]) )) = __pyx_v_machine_error;
 
-      /* "cycpd/cython/cython_functions.pyx":102
+      /* "cython_functions.pyx":102
  *     for j in range(x_i_shape):
  *         den_view[j] += c
  *         if den_view[j] == 0:             # <<<<<<<<<<<<<<
@@ -3581,7 +3571,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
     }
   }
 
-  /* "cycpd/cython/cython_functions.pyx":110
+  /* "cython_functions.pyx":110
  *     # tic = time.time()
  * 
  *     Np = 0             # <<<<<<<<<<<<<<
@@ -3590,7 +3580,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
   __pyx_v_Np = 0.0;
 
-  /* "cycpd/cython/cython_functions.pyx":111
+  /* "cython_functions.pyx":111
  * 
  *     Np = 0
  *     for i in range(y_i_shape):             # <<<<<<<<<<<<<<
@@ -3602,7 +3592,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_i = __pyx_t_10;
 
-    /* "cycpd/cython/cython_functions.pyx":112
+    /* "cython_functions.pyx":112
  *     Np = 0
  *     for i in range(y_i_shape):
  *         for j in range(x_i_shape):             # <<<<<<<<<<<<<<
@@ -3614,7 +3604,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_j = __pyx_t_13;
 
-      /* "cycpd/cython/cython_functions.pyx":114
+      /* "cython_functions.pyx":114
  *         for j in range(x_i_shape):
  *             # P   = np.divide(P, den[None,:])
  *             P_view[i, j] = P_view[i, j] / den_view[j]             # <<<<<<<<<<<<<<
@@ -3628,7 +3618,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
       __pyx_t_35 = __pyx_v_j;
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_P_view.data + __pyx_t_34 * __pyx_v_P_view.strides[0]) ) + __pyx_t_35 * __pyx_v_P_view.strides[1]) )) = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_P_view.data + __pyx_t_31 * __pyx_v_P_view.strides[0]) ) + __pyx_t_32 * __pyx_v_P_view.strides[1]) ))) / (*((double *) ( /* dim=0 */ (__pyx_v_den_view.data + __pyx_t_33 * __pyx_v_den_view.strides[0]) ))));
 
-      /* "cycpd/cython/cython_functions.pyx":116
+      /* "cython_functions.pyx":116
  *             P_view[i, j] = P_view[i, j] / den_view[j]
  *             # Pt1 = np.sum(P, axis=0)
  *             Pt1_view[j] +=  P_view[i, j]             # <<<<<<<<<<<<<<
@@ -3640,7 +3630,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
       __pyx_t_38 = __pyx_v_j;
       *((double *) ( /* dim=0 */ (__pyx_v_Pt1_view.data + __pyx_t_38 * __pyx_v_Pt1_view.strides[0]) )) += (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_P_view.data + __pyx_t_36 * __pyx_v_P_view.strides[0]) ) + __pyx_t_37 * __pyx_v_P_view.strides[1]) )));
 
-      /* "cycpd/cython/cython_functions.pyx":118
+      /* "cython_functions.pyx":118
  *             Pt1_view[j] +=  P_view[i, j]
  *             # P1  = np.sum(P, axis=1)
  *             P1_view[i] +=  P_view[i, j]             # <<<<<<<<<<<<<<
@@ -3653,7 +3643,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
       *((double *) ( /* dim=0 */ (__pyx_v_P1_view.data + __pyx_t_41 * __pyx_v_P1_view.strides[0]) )) += (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_P_view.data + __pyx_t_39 * __pyx_v_P_view.strides[0]) ) + __pyx_t_40 * __pyx_v_P_view.strides[1]) )));
     }
 
-    /* "cycpd/cython/cython_functions.pyx":120
+    /* "cython_functions.pyx":120
  *             P1_view[i] +=  P_view[i, j]
  *         # Np  = np.sum(P1)
  *         Np += P1_view[i]             # <<<<<<<<<<<<<<
@@ -3664,7 +3654,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
     __pyx_v_Np = (__pyx_v_Np + (*((double *) ( /* dim=0 */ (__pyx_v_P1_view.data + __pyx_t_42 * __pyx_v_P1_view.strides[0]) ))));
   }
 
-  /* "cycpd/cython/cython_functions.pyx":126
+  /* "cython_functions.pyx":126
  *     # tic = time.time()
  * 
  *     return P, Pt1, P1, Np             # <<<<<<<<<<<<<<
@@ -3672,33 +3662,27 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  * @cython.boundscheck(False)  # Deactivate bounds checking
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_P, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_Np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_Pt1, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_P1, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_Np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 126, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_43 = PyTuple_New(4); if (unlikely(!__pyx_t_43)) __PYX_ERR(0, 126, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_43);
+  __Pyx_INCREF(__pyx_v_P);
+  __Pyx_GIVEREF(__pyx_v_P);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_P);
+  __Pyx_INCREF(__pyx_v_Pt1);
+  __Pyx_GIVEREF(__pyx_v_Pt1);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_Pt1);
+  __Pyx_INCREF(__pyx_v_P1);
+  __Pyx_GIVEREF(__pyx_v_P1);
+  PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_P1);
   __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_43, 0, __pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_43, 1, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_43, 2, __pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_43, 3, __pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_t_2);
   __pyx_t_2 = 0;
+  __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
-  __pyx_t_3 = 0;
-  __pyx_t_5 = 0;
-  __pyx_r = __pyx_t_43;
-  __pyx_t_43 = 0;
   goto __pyx_L0;
 
-  /* "cycpd/cython/cython_functions.pyx":20
+  /* "cython_functions.pyx":20
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cython.cdivision(True) # Do division using C?
  * def expectation(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):             # <<<<<<<<<<<<<<
@@ -3714,20 +3698,19 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   __Pyx_XDECREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
-  __Pyx_XDECREF(__pyx_t_43);
-  __Pyx_AddTraceback("cycpd.cython_functions.expectation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.expectation", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_dtype);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_P, 1);
+  __Pyx_XDECREF(__pyx_v_P);
   __PYX_XDEC_MEMVIEW(&__pyx_v_P_view, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_den, 1);
+  __Pyx_XDECREF(__pyx_v_den);
   __PYX_XDEC_MEMVIEW(&__pyx_v_den_view, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_den_tmp, 1);
+  __Pyx_XDECREF(__pyx_v_den_tmp);
   __PYX_XDEC_MEMVIEW(&__pyx_v_den_tmp_view, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_Pt1, 1);
+  __Pyx_XDECREF(__pyx_v_Pt1);
   __PYX_XDEC_MEMVIEW(&__pyx_v_Pt1_view, 1);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_P1, 1);
+  __Pyx_XDECREF(__pyx_v_P1);
   __PYX_XDEC_MEMVIEW(&__pyx_v_P1_view, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_v_X_view, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_v_TY_view, 1);
@@ -3738,7 +3721,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "cycpd/cython/cython_functions.pyx":131
+/* "cython_functions.pyx":131
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cython.cdivision(True) # Do division using C?
  * def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):             # <<<<<<<<<<<<<<
@@ -3747,9 +3730,9 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_6expectation(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5cycpd_16cython_functions_3expectation_2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_5cycpd_16cython_functions_3expectation_2 = {"expectation_2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5cycpd_16cython_functions_3expectation_2, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5cycpd_16cython_functions_3expectation_2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_16cython_functions_3expectation_2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_16cython_functions_3expectation_2 = {"expectation_2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_16cython_functions_3expectation_2, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_16cython_functions_3expectation_2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_signatures = 0;
   PyObject *__pyx_v_args = 0;
   PyObject *__pyx_v_kwargs = 0;
@@ -3819,18 +3802,18 @@ static PyObject *__pyx_pw_5cycpd_16cython_functions_3expectation_2(PyObject *__p
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 131, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cycpd.cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5cycpd_16cython_functions_2expectation_2(__pyx_self, __pyx_v_signatures, __pyx_v_args, __pyx_v_kwargs, __pyx_v_defaults);
+  __pyx_r = __pyx_pf_16cython_functions_2expectation_2(__pyx_self, __pyx_v_signatures, __pyx_v_args, __pyx_v_kwargs, __pyx_v_defaults);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5cycpd_16cython_functions_2expectation_2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults) {
+static PyObject *__pyx_pf_16cython_functions_2expectation_2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults) {
   PyObject *__pyx_v_dest_sig = NULL;
   Py_ssize_t __pyx_v_i;
   PyTypeObject *__pyx_v_ndarray = 0;
@@ -4213,7 +4196,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_2expectation_2(CYTHON_UNUSED
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
   __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_AddTraceback("cycpd.cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_dest_sig);
@@ -4232,9 +4215,9 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_2expectation_2(CYTHON_UNUSED
 }
 
 /* Python wrapper */
-static PyObject *__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_11expectation_2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_fuse_0__pyx_mdef_5cycpd_16cython_functions_11expectation_2 = {"__pyx_fuse_0expectation_2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_11expectation_2, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_11expectation_2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_fuse_0__pyx_pw_16cython_functions_11expectation_2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_fuse_0__pyx_mdef_16cython_functions_11expectation_2 = {"__pyx_fuse_0expectation_2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_fuse_0__pyx_pw_16cython_functions_11expectation_2, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_fuse_0__pyx_pw_16cython_functions_11expectation_2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_X = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_TY = { 0, 0, { 0 }, { 0 }, { 0 } };
   double __pyx_v_sigma2;
@@ -4337,18 +4320,18 @@ static PyObject *__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_11expectation_2(
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("expectation_2", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 131, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cycpd.cython_functions.expectation_2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.expectation_2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5cycpd_16cython_functions_10expectation_2(__pyx_self, __pyx_v_X, __pyx_v_TY, __pyx_v_sigma2, __pyx_v_M, __pyx_v_N, __pyx_v_D, __pyx_v_w);
+  __pyx_r = __pyx_pf_16cython_functions_10expectation_2(__pyx_self, __pyx_v_X, __pyx_v_TY, __pyx_v_sigma2, __pyx_v_M, __pyx_v_N, __pyx_v_D, __pyx_v_w);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_TY, double __pyx_v_sigma2, int __pyx_v_M, int __pyx_v_N, int __pyx_v_D, double __pyx_v_w) {
+static PyObject *__pyx_pf_16cython_functions_10expectation_2(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_TY, double __pyx_v_sigma2, int __pyx_v_M, int __pyx_v_N, int __pyx_v_D, double __pyx_v_w) {
   PyObject *__pyx_v_dtype = NULL;
   Py_ssize_t __pyx_v_n;
   Py_ssize_t __pyx_v_m;
@@ -4360,7 +4343,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   double __pyx_v_tmp_total;
   double __pyx_v_Np;
   double __pyx_v_E;
-  __Pyx_memviewslice __pyx_v_temp_x = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_temp_x = NULL;
   __Pyx_memviewslice __pyx_v_temp_x_view = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_X_view = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_TY_view = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -4409,7 +4392,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   Py_ssize_t __pyx_t_33;
   __Pyx_RefNannySetupContext("__pyx_fuse_0expectation_2", 0);
 
-  /* "cycpd/cython/cython_functions.pyx":136
+  /* "cython_functions.pyx":136
  *     # cdef Py_ssize_t x_i_shape, x_j_shape, y_i_shape, y_j_shape
  *     if my_type is double:
  *         dtype = np.double             # <<<<<<<<<<<<<<
@@ -4424,9 +4407,9 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_v_dtype = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":142
+  /* "cython_functions.pyx":142
  *     cdef double ksig, diff, w_tmp, den, tmp_total, Np, E # den = sp in original matlab, tmp_total = razn
- *     cdef double [:] temp_x
+ *     # cdef double [:] temp_x
  *     temp_x = np.zeros(D, dtype=np.double)             # <<<<<<<<<<<<<<
  *     cdef double [:] temp_x_view = temp_x
  * 
@@ -4457,23 +4440,22 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 142, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_v_temp_x = __pyx_t_6;
-  __pyx_t_6.memview = NULL;
-  __pyx_t_6.data = NULL;
+  __pyx_v_temp_x = __pyx_t_5;
+  __pyx_t_5 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":143
- *     cdef double [:] temp_x
+  /* "cython_functions.pyx":143
+ *     # cdef double [:] temp_x
  *     temp_x = np.zeros(D, dtype=np.double)
  *     cdef double [:] temp_x_view = temp_x             # <<<<<<<<<<<<<<
  * 
  *     ksig = -2.0 * sigma2
  */
-  __PYX_INC_MEMVIEW(&__pyx_v_temp_x, 0);
-  __pyx_v_temp_x_view = __pyx_v_temp_x;
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_temp_x, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_v_temp_x_view = __pyx_t_6;
+  __pyx_t_6.memview = NULL;
+  __pyx_t_6.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":145
+  /* "cython_functions.pyx":145
  *     cdef double [:] temp_x_view = temp_x
  * 
  *     ksig = -2.0 * sigma2             # <<<<<<<<<<<<<<
@@ -4482,7 +4464,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
  */
   __pyx_v_ksig = (-2.0 * __pyx_v_sigma2);
 
-  /* "cycpd/cython/cython_functions.pyx":146
+  /* "cython_functions.pyx":146
  * 
  *     ksig = -2.0 * sigma2
  *     w_tmp = (w * M * c_pow(-ksig * 3.14159265358979,0.5*D))/((1-w)*N) # c in the original manuscript             # <<<<<<<<<<<<<<
@@ -4491,7 +4473,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
  */
   __pyx_v_w_tmp = (((__pyx_v_w * __pyx_v_M) * pow(((-__pyx_v_ksig) * 3.14159265358979), (0.5 * __pyx_v_D))) / ((1.0 - __pyx_v_w) * __pyx_v_N));
 
-  /* "cycpd/cython/cython_functions.pyx":148
+  /* "cython_functions.pyx":148
  *     w_tmp = (w * M * c_pow(-ksig * 3.14159265358979,0.5*D))/((1-w)*N) # c in the original manuscript
  * 
  *     cdef my_type[:, :] X_view = X             # <<<<<<<<<<<<<<
@@ -4501,7 +4483,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __PYX_INC_MEMVIEW(&__pyx_v_X, 0);
   __pyx_v_X_view = __pyx_v_X;
 
-  /* "cycpd/cython/cython_functions.pyx":149
+  /* "cython_functions.pyx":149
  * 
  *     cdef my_type[:, :] X_view = X
  *     cdef my_type[:, :] TY_view = TY             # <<<<<<<<<<<<<<
@@ -4511,7 +4493,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __PYX_INC_MEMVIEW(&__pyx_v_TY, 0);
   __pyx_v_TY_view = __pyx_v_TY;
 
-  /* "cycpd/cython/cython_functions.pyx":153
+  /* "cython_functions.pyx":153
  *      # Make P array
  *     # cdef my_type[:] P
  *     P = np.zeros(M, dtype=dtype)             # <<<<<<<<<<<<<<
@@ -4541,7 +4523,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_v_P = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":154
+  /* "cython_functions.pyx":154
  *     # cdef my_type[:] P
  *     P = np.zeros(M, dtype=dtype)
  *     cdef my_type[:] P_view = P             # <<<<<<<<<<<<<<
@@ -4553,7 +4535,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":158
+  /* "cython_functions.pyx":158
  *     # Make P1 array
  *     # cdef my_type[:] P1
  *     P1= np.zeros(M, dtype=dtype)             # <<<<<<<<<<<<<<
@@ -4583,7 +4565,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_v_P1 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":159
+  /* "cython_functions.pyx":159
  *     # cdef my_type[:] P1
  *     P1= np.zeros(M, dtype=dtype)
  *     cdef my_type[:] P1_view = P1             # <<<<<<<<<<<<<<
@@ -4595,7 +4577,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":163
+  /* "cython_functions.pyx":163
  *     # Make Pt1 array
  *     # cdef my_type[:] Pt1
  *     Pt1= np.zeros(N, dtype=dtype)             # <<<<<<<<<<<<<<
@@ -4625,7 +4607,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_v_Pt1 = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":164
+  /* "cython_functions.pyx":164
  *     # cdef my_type[:] Pt1
  *     Pt1= np.zeros(N, dtype=dtype)
  *     cdef my_type[:] Pt1_view = Pt1             # <<<<<<<<<<<<<<
@@ -4637,7 +4619,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":168
+  /* "cython_functions.pyx":168
  *     # Make Pt1 array
  *     # cdef my_type[:, :] Px
  *     Px= np.zeros((M, D), dtype=dtype)             # <<<<<<<<<<<<<<
@@ -4677,7 +4659,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_v_Px = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":169
+  /* "cython_functions.pyx":169
  *     # cdef my_type[:, :] Px
  *     Px= np.zeros((M, D), dtype=dtype)
  *     cdef my_type[:, :] Px_view = Px             # <<<<<<<<<<<<<<
@@ -4689,7 +4671,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "cycpd/cython/cython_functions.pyx":172
+  /* "cython_functions.pyx":172
  * 
  * 
  *     for n in range(N):             # <<<<<<<<<<<<<<
@@ -4701,7 +4683,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_n = __pyx_t_10;
 
-    /* "cycpd/cython/cython_functions.pyx":173
+    /* "cython_functions.pyx":173
  * 
  *     for n in range(N):
  *         den = 0             # <<<<<<<<<<<<<<
@@ -4710,7 +4692,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
  */
     __pyx_v_den = 0.0;
 
-    /* "cycpd/cython/cython_functions.pyx":174
+    /* "cython_functions.pyx":174
  *     for n in range(N):
  *         den = 0
  *         for m in range(M):             # <<<<<<<<<<<<<<
@@ -4722,7 +4704,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_m = __pyx_t_13;
 
-      /* "cycpd/cython/cython_functions.pyx":175
+      /* "cython_functions.pyx":175
  *         den = 0
  *         for m in range(M):
  *             tmp_total = 0             # <<<<<<<<<<<<<<
@@ -4731,7 +4713,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
  */
       __pyx_v_tmp_total = 0.0;
 
-      /* "cycpd/cython/cython_functions.pyx":176
+      /* "cython_functions.pyx":176
  *         for m in range(M):
  *             tmp_total = 0
  *             for d in range(D):             # <<<<<<<<<<<<<<
@@ -4743,7 +4725,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
         __pyx_v_d = __pyx_t_16;
 
-        /* "cycpd/cython/cython_functions.pyx":177
+        /* "cython_functions.pyx":177
  *             tmp_total = 0
  *             for d in range(D):
  *                 diff = X_view[n, d] - TY_view[m, d]             # <<<<<<<<<<<<<<
@@ -4756,7 +4738,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
         __pyx_t_20 = __pyx_v_d;
         __pyx_v_diff = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_X_view.data + __pyx_t_17 * __pyx_v_X_view.strides[0]) ) + __pyx_t_18 * __pyx_v_X_view.strides[1]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_TY_view.data + __pyx_t_19 * __pyx_v_TY_view.strides[0]) ) + __pyx_t_20 * __pyx_v_TY_view.strides[1]) ))));
 
-        /* "cycpd/cython/cython_functions.pyx":178
+        /* "cython_functions.pyx":178
  *             for d in range(D):
  *                 diff = X_view[n, d] - TY_view[m, d]
  *                 diff = diff * diff             # <<<<<<<<<<<<<<
@@ -4765,7 +4747,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
  */
         __pyx_v_diff = (__pyx_v_diff * __pyx_v_diff);
 
-        /* "cycpd/cython/cython_functions.pyx":179
+        /* "cython_functions.pyx":179
  *                 diff = X_view[n, d] - TY_view[m, d]
  *                 diff = diff * diff
  *                 tmp_total += diff             # <<<<<<<<<<<<<<
@@ -4775,7 +4757,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
         __pyx_v_tmp_total = (__pyx_v_tmp_total + __pyx_v_diff);
       }
 
-      /* "cycpd/cython/cython_functions.pyx":180
+      /* "cython_functions.pyx":180
  *                 diff = diff * diff
  *                 tmp_total += diff
  *             P_view[m] = c_exp(tmp_total/ksig)             # <<<<<<<<<<<<<<
@@ -4785,7 +4767,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
       __pyx_t_21 = __pyx_v_m;
       *((double *) ( /* dim=0 */ (__pyx_v_P_view.data + __pyx_t_21 * __pyx_v_P_view.strides[0]) )) = exp((__pyx_v_tmp_total / __pyx_v_ksig));
 
-      /* "cycpd/cython/cython_functions.pyx":181
+      /* "cython_functions.pyx":181
  *                 tmp_total += diff
  *             P_view[m] = c_exp(tmp_total/ksig)
  *             den += P_view[m]             # <<<<<<<<<<<<<<
@@ -4796,7 +4778,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
       __pyx_v_den = (__pyx_v_den + (*((double *) ( /* dim=0 */ (__pyx_v_P_view.data + __pyx_t_22 * __pyx_v_P_view.strides[0]) ))));
     }
 
-    /* "cycpd/cython/cython_functions.pyx":182
+    /* "cython_functions.pyx":182
  *             P_view[m] = c_exp(tmp_total/ksig)
  *             den += P_view[m]
  *         den += w_tmp             # <<<<<<<<<<<<<<
@@ -4805,7 +4787,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
  */
     __pyx_v_den = (__pyx_v_den + __pyx_v_w_tmp);
 
-    /* "cycpd/cython/cython_functions.pyx":183
+    /* "cython_functions.pyx":183
  *             den += P_view[m]
  *         den += w_tmp
  *         Pt1_view[n] = 1-w_tmp/den             # <<<<<<<<<<<<<<
@@ -4815,7 +4797,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
     __pyx_t_23 = __pyx_v_n;
     *((double *) ( /* dim=0 */ (__pyx_v_Pt1_view.data + __pyx_t_23 * __pyx_v_Pt1_view.strides[0]) )) = (1.0 - (__pyx_v_w_tmp / __pyx_v_den));
 
-    /* "cycpd/cython/cython_functions.pyx":185
+    /* "cython_functions.pyx":185
  *         Pt1_view[n] = 1-w_tmp/den
  * 
  *         for d in range(D):             # <<<<<<<<<<<<<<
@@ -4827,7 +4809,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_d = __pyx_t_13;
 
-      /* "cycpd/cython/cython_functions.pyx":186
+      /* "cython_functions.pyx":186
  * 
  *         for d in range(D):
  *             temp_x_view[d] = X_view[n, d] / den             # <<<<<<<<<<<<<<
@@ -4840,7 +4822,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
       *((double *) ( /* dim=0 */ (__pyx_v_temp_x_view.data + __pyx_t_26 * __pyx_v_temp_x_view.strides[0]) )) = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_X_view.data + __pyx_t_24 * __pyx_v_X_view.strides[0]) ) + __pyx_t_25 * __pyx_v_X_view.strides[1]) ))) / __pyx_v_den);
     }
 
-    /* "cycpd/cython/cython_functions.pyx":188
+    /* "cython_functions.pyx":188
  *             temp_x_view[d] = X_view[n, d] / den
  * 
  *         for m in range(M):             # <<<<<<<<<<<<<<
@@ -4852,7 +4834,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
     for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
       __pyx_v_m = __pyx_t_13;
 
-      /* "cycpd/cython/cython_functions.pyx":189
+      /* "cython_functions.pyx":189
  * 
  *         for m in range(M):
  *             P1_view[m] += P_view[m] / den             # <<<<<<<<<<<<<<
@@ -4863,7 +4845,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
       __pyx_t_28 = __pyx_v_m;
       *((double *) ( /* dim=0 */ (__pyx_v_P1_view.data + __pyx_t_28 * __pyx_v_P1_view.strides[0]) )) += ((*((double *) ( /* dim=0 */ (__pyx_v_P_view.data + __pyx_t_27 * __pyx_v_P_view.strides[0]) ))) / __pyx_v_den);
 
-      /* "cycpd/cython/cython_functions.pyx":191
+      /* "cython_functions.pyx":191
  *             P1_view[m] += P_view[m] / den
  * 
  *             for d in range(D):             # <<<<<<<<<<<<<<
@@ -4875,7 +4857,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
         __pyx_v_d = __pyx_t_16;
 
-        /* "cycpd/cython/cython_functions.pyx":192
+        /* "cython_functions.pyx":192
  * 
  *             for d in range(D):
  *                 Px_view[m, d] += temp_x_view[d] * P_view[m]             # <<<<<<<<<<<<<<
@@ -4890,7 +4872,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
       }
     }
 
-    /* "cycpd/cython/cython_functions.pyx":193
+    /* "cython_functions.pyx":193
  *             for d in range(D):
  *                 Px_view[m, d] += temp_x_view[d] * P_view[m]
  *         E += -c_log(den)             # <<<<<<<<<<<<<<
@@ -4900,7 +4882,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
     __pyx_v_E = (__pyx_v_E + (-log(__pyx_v_den)));
   }
 
-  /* "cycpd/cython/cython_functions.pyx":195
+  /* "cython_functions.pyx":195
  *         E += -c_log(den)
  * 
  *     Np = 0             # <<<<<<<<<<<<<<
@@ -4909,7 +4891,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
  */
   __pyx_v_Np = 0.0;
 
-  /* "cycpd/cython/cython_functions.pyx":196
+  /* "cython_functions.pyx":196
  * 
  *     Np = 0
  *     for m in range(M):             # <<<<<<<<<<<<<<
@@ -4921,7 +4903,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_m = __pyx_t_10;
 
-    /* "cycpd/cython/cython_functions.pyx":197
+    /* "cython_functions.pyx":197
  *     Np = 0
  *     for m in range(M):
  *         Np += P1_view[m]             # <<<<<<<<<<<<<<
@@ -4932,7 +4914,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
     __pyx_v_Np = (__pyx_v_Np + (*((double *) ( /* dim=0 */ (__pyx_v_P1_view.data + __pyx_t_33 * __pyx_v_P1_view.strides[0]) ))));
   }
 
-  /* "cycpd/cython/cython_functions.pyx":199
+  /* "cython_functions.pyx":199
  *         Np += P1_view[m]
  * 
  *     E += D * Np * c_log(sigma2)/2             # <<<<<<<<<<<<<<
@@ -4941,7 +4923,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
  */
   __pyx_v_E = (__pyx_v_E + (((__pyx_v_D * __pyx_v_Np) * log(__pyx_v_sigma2)) / 2.0));
 
-  /* "cycpd/cython/cython_functions.pyx":201
+  /* "cython_functions.pyx":201
  *     E += D * Np * c_log(sigma2)/2
  * 
  *     return P1, Pt1, Px, Np, E             # <<<<<<<<<<<<<<
@@ -4974,7 +4956,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "cycpd/cython/cython_functions.pyx":131
+  /* "cython_functions.pyx":131
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cython.cdivision(True) # Do division using C?
  * def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):             # <<<<<<<<<<<<<<
@@ -4991,11 +4973,11 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   __Pyx_XDECREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
-  __Pyx_AddTraceback("cycpd.cython_functions.expectation_2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.expectation_2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_dtype);
-  __PYX_XDEC_MEMVIEW(&__pyx_v_temp_x, 1);
+  __Pyx_XDECREF(__pyx_v_temp_x);
   __PYX_XDEC_MEMVIEW(&__pyx_v_temp_x_view, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_v_X_view, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_v_TY_view, 1);
@@ -5014,7 +4996,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "cycpd/cython/cython_functions.pyx":208
+/* "cython_functions.pyx":208
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def initialize_sigma2(my_type[:,:] X, my_type[:,:] Y):             # <<<<<<<<<<<<<<
@@ -5023,9 +5005,9 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_10expectation_2(CYTHON_UNUSE
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5cycpd_16cython_functions_5initialize_sigma2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_5cycpd_16cython_functions_5initialize_sigma2 = {"initialize_sigma2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5cycpd_16cython_functions_5initialize_sigma2, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5cycpd_16cython_functions_5initialize_sigma2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_16cython_functions_5initialize_sigma2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_16cython_functions_5initialize_sigma2 = {"initialize_sigma2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_16cython_functions_5initialize_sigma2, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_16cython_functions_5initialize_sigma2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_signatures = 0;
   PyObject *__pyx_v_args = 0;
   PyObject *__pyx_v_kwargs = 0;
@@ -5095,18 +5077,18 @@ static PyObject *__pyx_pw_5cycpd_16cython_functions_5initialize_sigma2(PyObject 
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__pyx_fused_cpdef", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 208, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cycpd.cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5cycpd_16cython_functions_4initialize_sigma2(__pyx_self, __pyx_v_signatures, __pyx_v_args, __pyx_v_kwargs, __pyx_v_defaults);
+  __pyx_r = __pyx_pf_16cython_functions_4initialize_sigma2(__pyx_self, __pyx_v_signatures, __pyx_v_args, __pyx_v_kwargs, __pyx_v_defaults);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5cycpd_16cython_functions_4initialize_sigma2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults) {
+static PyObject *__pyx_pf_16cython_functions_4initialize_sigma2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_signatures, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs, CYTHON_UNUSED PyObject *__pyx_v_defaults) {
   PyObject *__pyx_v_dest_sig = NULL;
   Py_ssize_t __pyx_v_i;
   PyTypeObject *__pyx_v_ndarray = 0;
@@ -5489,7 +5471,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_4initialize_sigma2(CYTHON_UN
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
   __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_AddTraceback("cycpd.cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.__pyx_fused_cpdef", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_dest_sig);
@@ -5508,9 +5490,9 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_4initialize_sigma2(CYTHON_UN
 }
 
 /* Python wrapper */
-static PyObject *__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_15initialize_sigma2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_fuse_0__pyx_mdef_5cycpd_16cython_functions_15initialize_sigma2 = {"__pyx_fuse_0initialize_sigma2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_15initialize_sigma2, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_15initialize_sigma2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_fuse_0__pyx_pw_16cython_functions_15initialize_sigma2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_fuse_0__pyx_mdef_16cython_functions_15initialize_sigma2 = {"__pyx_fuse_0initialize_sigma2", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_fuse_0__pyx_pw_16cython_functions_15initialize_sigma2, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_fuse_0__pyx_pw_16cython_functions_15initialize_sigma2(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_X = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_Y = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_r = 0;
@@ -5558,18 +5540,18 @@ static PyObject *__pyx_fuse_0__pyx_pw_5cycpd_16cython_functions_15initialize_sig
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("initialize_sigma2", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 208, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("cycpd.cython_functions.initialize_sigma2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.initialize_sigma2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(__pyx_self, __pyx_v_X, __pyx_v_Y);
+  __pyx_r = __pyx_pf_16cython_functions_14initialize_sigma2(__pyx_self, __pyx_v_X, __pyx_v_Y);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_Y) {
+static PyObject *__pyx_pf_16cython_functions_14initialize_sigma2(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_X, __Pyx_memviewslice __pyx_v_Y) {
   Py_ssize_t __pyx_v_x_i_shape;
   Py_ssize_t __pyx_v_x_j_shape;
   Py_ssize_t __pyx_v_y_i_shape;
@@ -5600,7 +5582,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
   PyObject *__pyx_t_14 = NULL;
   __Pyx_RefNannySetupContext("__pyx_fuse_0initialize_sigma2", 0);
 
-  /* "cycpd/cython/cython_functions.pyx":215
+  /* "cython_functions.pyx":215
  *     cdef Py_ssize_t x_i_shape, x_j_shape, y_i_shape, y_j_shape
  *     cdef my_type diff, diff2, sigma2, size
  *     cdef my_type err = 0             # <<<<<<<<<<<<<<
@@ -5609,7 +5591,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
  */
   __pyx_v_err = 0.0;
 
-  /* "cycpd/cython/cython_functions.pyx":218
+  /* "cython_functions.pyx":218
  *     cdef Py_ssize_t i, j, k
  * 
  *     x_i_shape = X.shape[0]             # <<<<<<<<<<<<<<
@@ -5618,7 +5600,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
  */
   __pyx_v_x_i_shape = (__pyx_v_X.shape[0]);
 
-  /* "cycpd/cython/cython_functions.pyx":219
+  /* "cython_functions.pyx":219
  * 
  *     x_i_shape = X.shape[0]
  *     x_j_shape = X.shape[1]             # <<<<<<<<<<<<<<
@@ -5627,7 +5609,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
  */
   __pyx_v_x_j_shape = (__pyx_v_X.shape[1]);
 
-  /* "cycpd/cython/cython_functions.pyx":220
+  /* "cython_functions.pyx":220
  *     x_i_shape = X.shape[0]
  *     x_j_shape = X.shape[1]
  *     y_i_shape = Y.shape[0]             # <<<<<<<<<<<<<<
@@ -5636,7 +5618,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
  */
   __pyx_v_y_i_shape = (__pyx_v_Y.shape[0]);
 
-  /* "cycpd/cython/cython_functions.pyx":221
+  /* "cython_functions.pyx":221
  *     x_j_shape = X.shape[1]
  *     y_i_shape = Y.shape[0]
  *     y_j_shape = Y.shape[1]             # <<<<<<<<<<<<<<
@@ -5645,7 +5627,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
  */
   __pyx_v_y_j_shape = (__pyx_v_Y.shape[1]);
 
-  /* "cycpd/cython/cython_functions.pyx":223
+  /* "cython_functions.pyx":223
  *     y_j_shape = Y.shape[1]
  * 
  *     assert x_j_shape == y_j_shape             # <<<<<<<<<<<<<<
@@ -5661,7 +5643,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
   }
   #endif
 
-  /* "cycpd/cython/cython_functions.pyx":225
+  /* "cython_functions.pyx":225
  *     assert x_j_shape == y_j_shape
  * 
  *     for i in range(x_i_shape):             # <<<<<<<<<<<<<<
@@ -5673,7 +5655,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "cycpd/cython/cython_functions.pyx":226
+    /* "cython_functions.pyx":226
  * 
  *     for i in range(x_i_shape):
  *         for j in range(y_i_shape):             # <<<<<<<<<<<<<<
@@ -5685,7 +5667,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_j = __pyx_t_6;
 
-      /* "cycpd/cython/cython_functions.pyx":227
+      /* "cython_functions.pyx":227
  *     for i in range(x_i_shape):
  *         for j in range(y_i_shape):
  *             for k in range(x_j_shape):             # <<<<<<<<<<<<<<
@@ -5697,7 +5679,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
       for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
         __pyx_v_k = __pyx_t_9;
 
-        /* "cycpd/cython/cython_functions.pyx":228
+        /* "cython_functions.pyx":228
  *         for j in range(y_i_shape):
  *             for k in range(x_j_shape):
  *                 diff = X[i, k] - Y[j, k]             # <<<<<<<<<<<<<<
@@ -5710,7 +5692,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
         __pyx_t_13 = __pyx_v_k;
         __pyx_v_diff = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_X.data + __pyx_t_10 * __pyx_v_X.strides[0]) ) + __pyx_t_11 * __pyx_v_X.strides[1]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_Y.data + __pyx_t_12 * __pyx_v_Y.strides[0]) ) + __pyx_t_13 * __pyx_v_Y.strides[1]) ))));
 
-        /* "cycpd/cython/cython_functions.pyx":229
+        /* "cython_functions.pyx":229
  *             for k in range(x_j_shape):
  *                 diff = X[i, k] - Y[j, k]
  *                 diff2 = c_pow(diff, 2.)             # <<<<<<<<<<<<<<
@@ -5719,7 +5701,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
  */
         __pyx_v_diff2 = pow(__pyx_v_diff, 2.);
 
-        /* "cycpd/cython/cython_functions.pyx":230
+        /* "cython_functions.pyx":230
  *                 diff = X[i, k] - Y[j, k]
  *                 diff2 = c_pow(diff, 2.)
  *                 err += diff2             # <<<<<<<<<<<<<<
@@ -5731,7 +5713,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
     }
   }
 
-  /* "cycpd/cython/cython_functions.pyx":232
+  /* "cython_functions.pyx":232
  *                 err += diff2
  * 
  *     size = (x_i_shape * y_i_shape * x_j_shape)             # <<<<<<<<<<<<<<
@@ -5740,7 +5722,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
  */
   __pyx_v_size = ((__pyx_v_x_i_shape * __pyx_v_y_i_shape) * __pyx_v_x_j_shape);
 
-  /* "cycpd/cython/cython_functions.pyx":233
+  /* "cython_functions.pyx":233
  * 
  *     size = (x_i_shape * y_i_shape * x_j_shape)
  *     sigma2 = err / size             # <<<<<<<<<<<<<<
@@ -5753,7 +5735,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
   }
   __pyx_v_sigma2 = (__pyx_v_err / __pyx_v_size);
 
-  /* "cycpd/cython/cython_functions.pyx":235
+  /* "cython_functions.pyx":235
  *     sigma2 = err / size
  * 
  *     return sigma2             # <<<<<<<<<<<<<<
@@ -5765,7 +5747,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
   __pyx_t_14 = 0;
   goto __pyx_L0;
 
-  /* "cycpd/cython/cython_functions.pyx":208
+  /* "cython_functions.pyx":208
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def initialize_sigma2(my_type[:,:] X, my_type[:,:] Y):             # <<<<<<<<<<<<<<
@@ -5776,7 +5758,7 @@ static PyObject *__pyx_pf_5cycpd_16cython_functions_14initialize_sigma2(CYTHON_U
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_AddTraceback("cycpd.cython_functions.initialize_sigma2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_functions.initialize_sigma2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_X, 1);
@@ -18731,7 +18713,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "cycpd.cython_functions.array", /*tp_name*/
+  "cython_functions.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -18850,7 +18832,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "cycpd.cython_functions.Enum", /*tp_name*/
+  "cython_functions.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -19111,7 +19093,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "cycpd.cython_functions.memoryview", /*tp_name*/
+  "cython_functions.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -19249,7 +19231,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "cycpd.cython_functions._memoryviewslice", /*tp_name*/
+  "cython_functions._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -19430,7 +19412,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
   {&__pyx_kp_s_cycpd_cython_cython_functions_py, __pyx_k_cycpd_cython_cython_functions_py, sizeof(__pyx_k_cycpd_cython_cython_functions_py), 0, 0, 1, 0},
-  {&__pyx_n_s_cycpd_cython_functions, __pyx_k_cycpd_cython_functions, sizeof(__pyx_k_cycpd_cython_functions), 0, 0, 1, 1},
+  {&__pyx_n_s_cython_functions, __pyx_k_cython_functions, sizeof(__pyx_k_cython_functions), 0, 0, 1, 1},
   {&__pyx_n_s_d, __pyx_k_d, sizeof(__pyx_k_d), 0, 0, 1, 1},
   {&__pyx_n_s_defaults, __pyx_k_defaults, sizeof(__pyx_k_defaults), 0, 0, 1, 1},
   {&__pyx_n_s_den, __pyx_k_den, sizeof(__pyx_k_den), 0, 0, 1, 1},
@@ -19553,7 +19535,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "cycpd/cython/cython_functions.pyx":20
+  /* "cython_functions.pyx":20
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cython.cdivision(True) # Do division using C?
  * def expectation(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):             # <<<<<<<<<<<<<<
@@ -19759,7 +19741,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "cycpd/cython/cython_functions.pyx":20
+  /* "cython_functions.pyx":20
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cython.cdivision(True) # Do division using C?
  * def expectation(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):             # <<<<<<<<<<<<<<
@@ -19771,7 +19753,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__23);
   __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(7, 0, 39, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cycpd_cython_cython_functions_py, __pyx_n_s_expectation, 20, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 20, __pyx_L1_error)
 
-  /* "cycpd/cython/cython_functions.pyx":131
+  /* "cython_functions.pyx":131
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cython.cdivision(True) # Do division using C?
  * def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):             # <<<<<<<<<<<<<<
@@ -19783,7 +19765,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__25);
   __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(7, 0, 30, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cycpd_cython_cython_functions_py, __pyx_n_s_expectation_2, 131, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 131, __pyx_L1_error)
 
-  /* "cycpd/cython/cython_functions.pyx":208
+  /* "cython_functions.pyx":208
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def initialize_sigma2(my_type[:,:] X, my_type[:,:] Y):             # <<<<<<<<<<<<<<
@@ -20178,14 +20160,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_cycpd__cython_functions) {
+  if (__pyx_module_is_main_cython_functions) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "cycpd.cython_functions")) {
-      if (unlikely(PyDict_SetItemString(modules, "cycpd.cython_functions", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "cython_functions")) {
+      if (unlikely(PyDict_SetItemString(modules, "cython_functions", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -20206,7 +20188,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "cycpd/cython/cython_functions.pyx":2
+  /* "cython_functions.pyx":2
  * # cython: infer_types=True
  * import numpy as np             # <<<<<<<<<<<<<<
  * cimport cython
@@ -20217,7 +20199,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":20
+  /* "cython_functions.pyx":20
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cython.cdivision(True) # Do division using C?
  * def expectation(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):             # <<<<<<<<<<<<<<
@@ -20226,12 +20208,12 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_5cycpd_16cython_functions_7expectation, 0, __pyx_n_s_expectation, NULL, __pyx_n_s_cycpd_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_2 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_16cython_functions_7expectation, 0, __pyx_n_s_expectation, NULL, __pyx_n_s_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_empty_tuple);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_double, __pyx_t_2) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_FusedFunction_NewEx(&__pyx_mdef_5cycpd_16cython_functions_1expectation, 0, __pyx_n_s_expectation, NULL, __pyx_n_s_cycpd_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_2 = __pyx_FusedFunction_NewEx(&__pyx_mdef_16cython_functions_1expectation, 0, __pyx_n_s_expectation, NULL, __pyx_n_s_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_empty_tuple);
   ((__pyx_FusedFunctionObject *) __pyx_t_2)->__signatures__ = __pyx_t_1;
@@ -20239,7 +20221,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_expectation, __pyx_t_2) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":131
+  /* "cython_functions.pyx":131
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * @cython.cdivision(True) # Do division using C?
  * def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N, int D, double w):             # <<<<<<<<<<<<<<
@@ -20248,12 +20230,12 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_5cycpd_16cython_functions_11expectation_2, 0, __pyx_n_s_expectation_2, NULL, __pyx_n_s_cycpd_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_4 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_16cython_functions_11expectation_2, 0, __pyx_n_s_expectation_2, NULL, __pyx_n_s_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_empty_tuple);
   if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_double, __pyx_t_4) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_FusedFunction_NewEx(&__pyx_mdef_5cycpd_16cython_functions_3expectation_2, 0, __pyx_n_s_expectation_2, NULL, __pyx_n_s_cycpd_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_4 = __pyx_FusedFunction_NewEx(&__pyx_mdef_16cython_functions_3expectation_2, 0, __pyx_n_s_expectation_2, NULL, __pyx_n_s_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_empty_tuple);
   ((__pyx_FusedFunctionObject *) __pyx_t_4)->__signatures__ = __pyx_t_3;
@@ -20261,7 +20243,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_expectation_2, __pyx_t_4) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":208
+  /* "cython_functions.pyx":208
  * @cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)   # Deactivate negative indexing.
  * def initialize_sigma2(my_type[:,:] X, my_type[:,:] Y):             # <<<<<<<<<<<<<<
@@ -20270,12 +20252,12 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_5cycpd_16cython_functions_15initialize_sigma2, 0, __pyx_n_s_initialize_sigma2, NULL, __pyx_n_s_cycpd_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_fuse_0__pyx_mdef_16cython_functions_15initialize_sigma2, 0, __pyx_n_s_initialize_sigma2, NULL, __pyx_n_s_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_6, __pyx_empty_tuple);
   if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_double, __pyx_t_6) < 0) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_mdef_5cycpd_16cython_functions_5initialize_sigma2, 0, __pyx_n_s_initialize_sigma2, NULL, __pyx_n_s_cycpd_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_6 = __pyx_FusedFunction_NewEx(&__pyx_mdef_16cython_functions_5initialize_sigma2, 0, __pyx_n_s_initialize_sigma2, NULL, __pyx_n_s_cython_functions, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_6, __pyx_empty_tuple);
   ((__pyx_FusedFunctionObject *) __pyx_t_6)->__signatures__ = __pyx_t_5;
@@ -20283,7 +20265,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_initialize_sigma2, __pyx_t_6) < 0) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "cycpd/cython/cython_functions.pyx":1
+  /* "cython_functions.pyx":1
  * # cython: infer_types=True             # <<<<<<<<<<<<<<
  * import numpy as np
  * cimport cython
@@ -20459,11 +20441,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_7);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init cycpd.cython_functions", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init cython_functions", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init cycpd.cython_functions");
+    PyErr_SetString(PyExc_ImportError, "init cython_functions");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -24956,18 +24938,6 @@ __pyx_fail:
         return _PyLong_FromByteArray(bytes, sizeof(int),
                                      little, !is_unsigned);
     }
-}
-
-/* MemviewDtypeToObject */
-  static CYTHON_INLINE PyObject *__pyx_memview_get_double(const char *itemp) {
-    return (PyObject *) PyFloat_FromDouble(*(double *) itemp);
-}
-static CYTHON_INLINE int __pyx_memview_set_double(const char *itemp, PyObject *obj) {
-    double value = __pyx_PyFloat_AsDouble(obj);
-    if ((value == (double)-1) && PyErr_Occurred())
-        return 0;
-    *(double *) itemp = value;
-    return 1;
 }
 
 /* MemviewSliceCopyTemplate */

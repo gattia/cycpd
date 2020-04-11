@@ -35,12 +35,12 @@ def visualize(iteration, error, X, Y, ax, fig, tilt=0, rotation_factor=5):
     # plt.pause(1.0)
 
 def main():
-    X = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
+    Y = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
 
     # Below are points from a completely different knee that were already rigidly registered to X
     # If there isnt something to make them "somewhat" close to one another, then the registration fails.
     # Therefore, this first step was performed to improve testing.
-    Y = np.loadtxt('../data/surface_points_bone_2_rigid_register_to_1_5k_points.npy')
+    X = np.loadtxt('../data/surface_points_bone_2_rigid_register_to_1_5k_points.npy')
 
     # These will not perfectly align and they will not even be "done" when we get to iteration 100.
     # But this is a good starting point test and shows the movement of one of the meshes over time as it tries to align
@@ -52,7 +52,7 @@ def main():
     ax = [ax1, ax2]
     callback = partial(visualize, ax=ax, fig=fig)
 
-    reg = deformable_registration(**{ 'X': X, 'Y': Y })
+    reg = deformable_registration(**{ 'X': X, 'Y': Y, 'alpha': 0.5, 'beta': 2.5})
     reg.register(callback)
     plt.show()
 
