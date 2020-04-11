@@ -34,12 +34,12 @@ def visualize(iteration, error, X, Y, ax, tilt=25, rotation_factor=5):
     # plt.pause(1.0)
 
 def main():
-    X = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
+    X = np.loadtxt('../data/surface_points_bone_deformable_target.npy')
 
     # Below are points from a completely different knee that were already rigidly registered to X
     # If there isnt something to make them "somewhat" close to one another, then the registration fails.
     # Therefore, this first step was performed to improve testing.
-    Y = np.loadtxt('../data/surface_points_bone_2_rigid_register_to_1_5k_points.npy')
+    Y = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
 
     # These will not perfectly align and they will not even be "done" when we get to iteration 100.
     # But this is a good starting point test and shows the movement of one of the meshes over time as it tries to align
@@ -51,9 +51,31 @@ def main():
     ax = [ax1, ax2]
     callback = partial(visualize, ax=ax)
 
-    reg = deformable_registration(**{ 'X': X, 'Y': Y })
-    reg.register(callback)
+    reg = deformable_registration(**{ 'X': X,
+                                      'Y': Y,
+                                      'max_iterations': 100,
+                                      'alpha': 0.1,
+                                      'beta': 3
+                                      })
+    TY, _ = reg.register(callback)
+
     plt.show()
+
+    differences = X[:, None, :] - TY[None, :, :]
+    distances = np.sqrt(np.sum(differences ** 2, axis=2))
+    min_x_dist_per_ty_point = np.min(distances, axis=0)
+    sorted_distances = np.sort(min_x_dist_per_ty_point)
+    worst_one_percent_error = sorted_distances[int(len(min_x_dist_per_ty_point) * 0.99)]
+    worst_five_percent_error = sorted_distances[int(len(min_x_dist_per_ty_point) * 0.95)]
+    worst_ten_percent_error = sorted_distances[int(len(min_x_dist_per_ty_point) * 0.90)]
+
+    plt.figure()
+    plt.hist(sorted_distances)
+    plt.show()
+
+    print('Bottom 1% error: {}'.format(worst_one_percent_error))
+    print('Bottom 5% error: {}'.format(worst_five_percent_error))
+    print('Bottom 10% error: {}'.format(worst_ten_percent_error))
 
 if __name__ == '__main__':
     main()
