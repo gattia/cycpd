@@ -1,4 +1,3 @@
-import pytest
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
 from cycpd import gaussian_kernel, deformable_registration
@@ -18,12 +17,12 @@ def test_2D():
     print('Number of iterations: {}'.format(reg.iteration))
 
 def test_3D():
-    X = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
+    X = np.loadtxt('../data/surface_points_bone_2_rigid_register_to_1_5k_points.npy')
 
     # Below are points from a completely different knee that were already rigidly registered to X
     # If there isnt something to make them "somewhat" close to one another, then the registration fails.
     # Therefore, this first step was performed to improve testing.
-    Y = np.loadtxt('../data/surface_points_bone_2_rigid_register_to_1_5k_points.npy')
+    Y = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
 
     # These will not perfectly align and they will not even be "done" when we get to iteration 100.
     # But this is a good starting point test.
