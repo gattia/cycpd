@@ -5,7 +5,13 @@ from cython_functions import *
 
 class expectation_maximization_registration(object):
 
-    def __init__(self, X, Y, max_iterations=100, tolerance=1e-5, w=0., verbose=True, *args, **kwargs):
+    def __init__(self, X, Y,
+                 max_iterations=100,
+                 tolerance=1e-5,
+                 w=0.,
+                 verbose=True,
+                 print_reg_params=True,
+                 *args, **kwargs):
         if type(X) is not np.ndarray or X.ndim != 2:
             raise ValueError("The target point cloud (X) must be at a 2D numpy array.")
         if type(Y) is not np.ndarray or Y.ndim != 2:
@@ -41,6 +47,7 @@ class expectation_maximization_registration(object):
         self.sigma2         = 0.
         self.sigma2_prev    = 0.
         self.verbose        = verbose
+        self.print_reg_params = print_reg_params
 
 
     def register(self, callback=lambda **kwargs: None):
@@ -52,29 +59,29 @@ class expectation_maximization_registration(object):
         while (self.iteration < self.max_iterations) and (self.err > self.tolerance) and (self.sigma2 > np.finfo(float).eps):
             self.iterate()
             if callable(callback):
-                print('using callback')
                 kwargs = {'iteration': self.iteration, 'error': self.err, 'X': self.X, 'Y': self.TY}
                 callback(**kwargs)
 
-        print('='*72)
-        print('Registration Performance Metrics')
-        print('='*72)
-        print('Time to initialize EM: {}'.format(self.time_to_initiate_registration))
-        print('Time to initialize registration: {}'.format(self.time_to_initialize_registration))
-        print('Average Expectation Time:                {:10.4f} +/- {:5.4f}'.format(np.mean(self.expectation_times),
-                                                            np.std(self.expectation_times)))
-        print('Average Maximization Time:               {:10.4f} +/- {:5.4f}'.format(np.mean(self.maximization_times),
-                                                             np.std(self.maximization_times)))
-        print('Maximization Times - Per individual step')
-        print('Average Update Transform Time:           {:10.4f} +/- {:5.4f}'.format(np.mean(self.update_transform_times),
-                                                            np.std(self.update_transform_times)))
-        print('Average Transform Time:                  {:10.4f} +/- {:5.4f}'.format(np.mean(self.transform_times),
-                                                             np.std(self.transform_times)))
-        print('Average Update Variance Time:            {:10.4f} +/- {:5.4f}'.format(np.mean(self.update_variance_times),
-                                                          np.std(self.update_variance_times)))
-        print('')
-        print('Number of iterations performed:          {}'.format(self.iteration))
-        print('Error at time of finish:                 {}'.format(self.err))
+        if self.print_reg_params is True:
+            print('='*72)
+            print('Registration Performance Metrics')
+            print('='*72)
+            print('Time to initialize EM: {}'.format(self.time_to_initiate_registration))
+            print('Time to initialize registration: {}'.format(self.time_to_initialize_registration))
+            print('Average Expectation Time:                {:10.4f} +/- {:5.4f}'.format(np.mean(self.expectation_times),
+                                                                np.std(self.expectation_times)))
+            print('Average Maximization Time:               {:10.4f} +/- {:5.4f}'.format(np.mean(self.maximization_times),
+                                                                 np.std(self.maximization_times)))
+            print('Maximization Times - Per individual step')
+            print('Average Update Transform Time:           {:10.4f} +/- {:5.4f}'.format(np.mean(self.update_transform_times),
+                                                                np.std(self.update_transform_times)))
+            print('Average Transform Time:                  {:10.4f} +/- {:5.4f}'.format(np.mean(self.transform_times),
+                                                                 np.std(self.transform_times)))
+            print('Average Update Variance Time:            {:10.4f} +/- {:5.4f}'.format(np.mean(self.update_variance_times),
+                                                              np.std(self.update_variance_times)))
+            print('')
+            print('Number of iterations performed:          {}'.format(self.iteration))
+            print('Error at time of finish:                 {}'.format(self.err))
 
         return self.TY, self.get_registration_parameters()
 

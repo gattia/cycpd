@@ -5,6 +5,7 @@ from cycpd import rigid_registration
 import numpy as np
 import time
 
+
 def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):
     plt.cla()
     ax[0].cla()
@@ -23,16 +24,9 @@ def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):
     ax[1].view_init(tilt, rotation_factor * iteration)
 
     plt.draw()
-    fig.savefig('rigid_{:04}.tiff'.format(iteration))  # Used for making gif.
-    # plt.pause(0.001)
+    # fig.savefig('rigid_{:04}.tiff'.format(iteration))  # Used for making gif.
+    plt.pause(0.001)
 
-    # plt.cla()
-    # ax.scatter(X[:,0],  X[:,1], X[:,2], color='red', label='Target', alpha=0.5, s=0.5)
-    # ax.scatter(Y[:,0],  Y[:,1], Y[:,2], color='blue', label='Source', alpha=0.8, s=0.5)
-    # ax.text2D(0.87, 0.92, 'Iteration: {:d}\nError: {:06.4f}'.format(iteration, error), horizontalalignment='center', verticalalignment='center', transform=ax.transAxes, fontsize='x-large')
-    # ax.legend(loc='upper left', fontsize='x-large')
-    # plt.draw()
-    # plt.pause(0.001)
 
 def main():
     theta = np.pi / 6.0
@@ -40,8 +34,6 @@ def main():
     t = np.array([0.5, 1.0, -2.0])
 
     Y = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
-    # Y = np.zeros((knee_target.shape[0], knee_target.shape[1] + 1))
-    # Y[:,:-1] = knee_target
     X = np.dot(Y, R) + t
 
     fig = plt.figure(figsize=plt.figaspect(0.5))
@@ -50,13 +42,14 @@ def main():
     ax = [ax1, ax2]
     callback = partial(visualize, ax=ax, fig=fig)
 
-    reg = rigid_registration(**{ 'X': X, 'Y':Y})
+    reg = rigid_registration(**{'X': X, 'Y': Y})
     # reg = rigid_registration(**{'X': X, 'Y': Y, 'scale': False})
     # The above shows an example where we dont "test" or determine the scale.
     # This makes it clear the CPD first actually shrinks the mesh and then "grows" it iteratively to make it
     # best fit the data.
     reg.register(callback)
     plt.show()
+
 
 if __name__ == '__main__':
     main()
