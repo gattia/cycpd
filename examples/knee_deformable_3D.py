@@ -23,8 +23,8 @@ def visualize(iteration, error, X, Y, ax, fig, tilt=0, rotation_factor=5):
     ax[1].view_init(tilt, rotation_factor * iteration)
 
     plt.draw()
-    # fig.savefig('deformable_{:04}.tiff'.format(iteration))  # Used for making gif.
-    plt.pause(0.001)
+    fig.savefig('deformable_{:04}.tiff'.format(iteration))  # Used for making gif.
+    # plt.pause(0.001)
 
     # plt.cla()
     # ax.scatter(X[:,0],  X[:,1], X[:,2], color='red', label='Target', alpha=0.5, s=0.5)
