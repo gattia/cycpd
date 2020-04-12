@@ -4,17 +4,18 @@ from mpl_toolkits.mplot3d import Axes3D
 from cycpd import affine_registration
 import numpy as np
 
+
 def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):
     plt.cla()
     ax[0].cla()
     ax[1].cla()
 
-    ax[0].scatter(X[:,0],  X[:,1], X[:,2], color='red', label='Target', alpha=0.5, s=0.5)
-    ax[0].scatter(Y[:,0],  Y[:,1], Y[:,2], color='blue', label='Source', alpha=0.8, s=0.5)
+    ax[0].scatter(X[:, 0],  X[:, 1], X[:, 2], color='red', label='Target', alpha=0.5, s=0.5)
+    ax[0].scatter(Y[:, 0],  Y[:, 1], Y[:, 2], color='blue', label='Source', alpha=0.8, s=0.5)
     ax[0].legend(loc='upper left', fontsize='x-large')
     ax[0].text2D(0.87, 0.92, 'Iteration: {:d}\nError: {:06.4f}'.format(iteration, error),
-               horizontalalignment='center', verticalalignment='center', transform=ax[0].transAxes,
-               fontsize='x-large')
+                 horizontalalignment='center', verticalalignment='center', transform=ax[0].transAxes,
+                 fontsize='x-large')
     ax[0].view_init(tilt, 225)
 
     ax[1].scatter(X[:, 0], X[:, 1], X[:, 2], color='red', label='Target', alpha=0.5, s=0.5)
@@ -24,6 +25,7 @@ def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):
     plt.draw()
     # fig.savefig('affine_{:04}.tiff'.format(iteration)) # Used for making gif.
     plt.pause(0.001)
+
 
 def main():
     theta = np.pi / 6.0
@@ -35,8 +37,8 @@ def main():
     Hzx = 0
     Hzy = 0
     shear_matrix = [[1, Hxy, Hxz],
-                     [Hyx, 1, Hyz],
-                     [Hzx, Hzy, 1]]
+                    [Hyx, 1, Hyz],
+                    [Hzx, Hzy, 1]]
     R = np.array([[np.cos(theta), -np.sin(theta), 0],
                   [np.sin(theta), np.cos(theta), 0],
                   [0, 0, 1]])
@@ -52,9 +54,10 @@ def main():
     ax = [ax1, ax2]
     callback = partial(visualize, ax=ax, fig=fig)
 
-    reg = affine_registration(**{ 'X': X, 'Y': Y })
+    reg = affine_registration(**{'X': X, 'Y': Y})
     reg.register(callback)
     plt.show()
+
 
 if __name__ == '__main__':
     main()

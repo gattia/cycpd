@@ -5,6 +5,7 @@ from cycpd import deformable_registration, rigid_registration
 import numpy as np
 import time
 
+
 def visualize(iteration, error, X, Y, ax, fig, tilt=0, rotation_factor=5):
     plt.cla()
     ax[0].cla()
@@ -26,13 +27,6 @@ def visualize(iteration, error, X, Y, ax, fig, tilt=0, rotation_factor=5):
     fig.savefig('deformable_{:04}.tiff'.format(iteration))  # Used for making gif.
     # plt.pause(0.001)
 
-    # plt.cla()
-    # ax.scatter(X[:,0],  X[:,1], X[:,2], color='red', label='Target', alpha=0.5, s=0.5)
-    # ax.scatter(Y[:,0],  Y[:,1], Y[:,2], color='blue', label='Source', alpha=0.8, s=0.5)
-    # ax.text2D(0.87, 0.92, 'Iteration: {:d}\nError: {:06.4f}'.format(iteration, error), horizontalalignment='center', verticalalignment='center', transform=ax.transAxes, fontsize='x-large')
-    # ax.legend(loc='upper left', fontsize='x-large')
-    # plt.draw()
-    # plt.pause(1.0)
 
 def main():
     X = np.loadtxt('../data/surface_points_bone_deformable_target.npy')
@@ -52,12 +46,12 @@ def main():
     ax = [ax1, ax2]
     callback = partial(visualize, ax=ax, fig=fig)
 
-    reg = deformable_registration(**{ 'X': X,
-                                      'Y': Y,
-                                      'max_iterations': 100,
-                                      'alpha': 0.1,
-                                      'beta': 3
-                                      })
+    reg = deformable_registration(**{'X': X,
+                                     'Y': Y,
+                                     'max_iterations': 100,
+                                     'alpha': 0.1,
+                                     'beta': 3
+                                     })
     TY, _ = reg.register(callback)
 
     plt.show()
@@ -77,6 +71,7 @@ def main():
     print('Bottom 1% error: {}'.format(worst_one_percent_error))
     print('Bottom 5% error: {}'.format(worst_five_percent_error))
     print('Bottom 10% error: {}'.format(worst_ten_percent_error))
+
 
 if __name__ == '__main__':
     main()
