@@ -29,6 +29,7 @@ class expectation_maximization_registration(object):
 
         self.X              = X
         self.Y              = Y
+        self.TY             = None
         self.N              = self.X.shape[0]
         self.D              = self.X.shape[1]
         self.M              = self.Y.shape[0]

@@ -3,25 +3,23 @@ import numpy as np
 import time
 from .expectation_maximization_registration import expectation_maximization_registration
 
-def gaussian_kernel(Y, beta):
-    diff = Y[None,:,:] - Y[:,None,:]
+def gaussian_kernel(X, beta, Y=None):
+    if Y is None:
+        Y = X
+    diff = X[:, None, :] - Y[None, :, :]
     diff = diff**2
     diff = np.sum(diff, 2)
     return np.exp(-diff / (2 * beta**2))
 
-def lowrankQS(Y, beta, num_eig, eig_fgt=False):
-    # M, D = Y.shape
-    # hsigma=np.sqrt(2)*beta
-
+def lowrankQS(G, beta, num_eig, eig_fgt=False):
     # if we do not use FGT we construct affinity matrix G and find the
     # first eigenvectors/values directly
 
     if eig_fgt is False:
-        G=gaussian_kernel(Y, beta)
-        S, Q=np.linalg.eigh(G)
+        S, Q = np.linalg.eigh(G)
         eig_indices = list(np.argsort(np.abs(S))[::-1][:num_eig])
-        Q = Q[:,eig_indices] # eigenvectors
-        S = S[eig_indices] # eigenvalues.
+        Q = Q[:, eig_indices]  # eigenvectors
+        S = S[eig_indices]  # eigenvalues.
 
         return Q, S
 
@@ -35,13 +33,13 @@ class deformable_registration(expectation_maximization_registration):
         self.alpha         = 2 if alpha is None else alpha
         self.beta          = 2 if beta is None else beta
         self.num_eig       = num_eig
-        self.eigfgt        = eig_fgt
+        self.eig_fgt       = eig_fgt
         self.W             = np.zeros((self.M, self.D))
         self.G             = gaussian_kernel(self.Y, self.beta)
         self.low_rank      = low_rank
 
         if self.low_rank is True:
-            self.Q, self.S  = lowrankQS(self.Y, self.beta, self.num_eig, eig_fgt=eig_fgt)
+            self.Q, self.S = lowrankQS(self.G, self.beta, self.num_eig, eig_fgt=self.eig_fgt)
             self.inv_S = np.diag(1./self.S)
             self.S = np.diag(self.S)
         toc = time.time()
@@ -75,6 +73,7 @@ class deformable_registration(expectation_maximization_registration):
             # The absolute difference is more conservative (does more iterations) than the line above it which
             # is calculating the normalized change in the E(L). This calculation was changed to match the matlab
             # code created for low_rank matrices.
+        print(self.W.shape)
 
     def transform_point_cloud(self, Y=None):
         if self.low_rank is False:
@@ -82,13 +81,15 @@ class deformable_registration(expectation_maximization_registration):
                 self.TY = self.Y + np.dot(self.G, self.W)
                 return
             else:
-                return Y + np.dot(self.G, self.W)
+                G = gaussian_kernel(Y, self.beta)
+                return Y + np.dot(G, self.W)
         elif self.low_rank is True:
             if Y is None:
                 self.TY = self.Y + np.matmul(self.Q, np.matmul(self.S, np.matmul(self.Q.T, self.W)))
                 return
             else:
-                return Y + np.matmul(self.Q, np.matmul(self.S, np.matmul(self.Q.T, self.W)))
+                G = gaussian_kernel(Y, beta=self.beta, Y=self.Y)
+                return Y + np.matmul(G, self.W)
 
     def update_variance(self):
         self.sigma2_prev = self.sigma2
