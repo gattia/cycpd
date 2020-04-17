@@ -81,8 +81,8 @@ class deformable_registration(expectation_maximization_registration):
                 self.TY = self.Y + np.dot(self.G, self.W)
                 return
             else:
-                G = gaussian_kernel(Y, self.beta)
-                return Y + np.dot(G, self.W)
+                G = gaussian_kernel(Y, self.beta, Y=self.Y)
+                return Y + np.matmul(G, self.W)
         elif self.low_rank is True:
             if Y is None:
                 self.TY = self.Y + np.matmul(self.Q, np.matmul(self.S, np.matmul(self.Q.T, self.W)))
