@@ -73,7 +73,6 @@ class deformable_registration(expectation_maximization_registration):
             # The absolute difference is more conservative (does more iterations) than the line above it which
             # is calculating the normalized change in the E(L). This calculation was changed to match the matlab
             # code created for low_rank matrices.
-        print(self.W.shape)
 
     def transform_point_cloud(self, Y=None):
         if self.low_rank is False:
