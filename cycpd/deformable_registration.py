@@ -39,7 +39,7 @@ class deformable_registration(expectation_maximization_registration):
         self.low_rank      = low_rank
 
         if self.low_rank is True:
-            self.Q, self.S = lowrankQS(self.G, self.beta, self.num_eig, eig_fgt=self.eig_fgt)
+            self.Q, self.S = lowrankQS(self.G, num_eig=self.num_eig, eig_fgt=self.eig_fgt)
             self.inv_S = np.diag(1./self.S)
             self.S = np.diag(self.S)
         toc = time.time()
