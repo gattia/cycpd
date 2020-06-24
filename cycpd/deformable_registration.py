@@ -11,7 +11,7 @@ def gaussian_kernel(X, beta, Y=None):
     diff = np.sum(diff, 2)
     return np.exp(-diff / (2 * beta**2))
 
-def lowrankQS(G, beta, num_eig, eig_fgt=False):
+def lowrankQS(G, num_eig, eig_fgt=False):
     # if we do not use FGT we construct affinity matrix G and find the
     # first eigenvectors/values directly
 
@@ -24,7 +24,7 @@ def lowrankQS(G, beta, num_eig, eig_fgt=False):
         return Q, S
 
     elif eig_fgt is True:
-        raise Exception('Fast Gauss Transform Not Implemented!')
+        raise Exception('Fast Gauss Transform Not Yet Implemented!')
 
 class deformable_registration(expectation_maximization_registration):
     def __init__(self, alpha=2, beta=2, low_rank=True, num_eig=100, eig_fgt=False, *args, **kwargs):
