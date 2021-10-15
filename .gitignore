@@ -3,3 +3,5 @@
 build
 cycpd.egg-info
 dist
+cython_functions.c
+__pycache__
