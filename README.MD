@@ -70,9 +70,9 @@ There are three exmples currently implemented. They all show registration of two
 These examples can be run by navigating to the examples folder (after installing) and running: 
 
 ```
-python knee_rigid.py
-python knee_affine.py
-python knee_deformable.py
+python knee_rigid_3D.py
+python knee_affine_3D.py
+python knee_deformable_3D.py
 ```
 
 ## Rigid
