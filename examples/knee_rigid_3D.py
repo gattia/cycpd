@@ -1,9 +1,9 @@
 from functools import partial
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+# from mpl_toolkits.mplot3d import Axes3D   # unused import
 from cycpd import rigid_registration
 import numpy as np
-import time
+# import time # unused import
 
 
 def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):

@@ -4,6 +4,7 @@ import time
 from .expectation_maximization_registration import expectation_maximization_registration
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
 
+
 class rigid_registration(expectation_maximization_registration):
 
     def __init__(self, R=None, t=None, s=None, scale=True, *args, **kwargs):
@@ -18,6 +19,7 @@ class rigid_registration(expectation_maximization_registration):
         self.t = np.atleast_2d(np.zeros((1, self.D))) if t is None else t
         self.s = 1. if s is None else s
         self.muX = None
+        self.muY = None
         self.myU = None
         self.S = None
         self.C = None
@@ -25,7 +27,6 @@ class rigid_registration(expectation_maximization_registration):
 
         toc = time.time()
         self.time_to_initialize_registration = toc - tic
-
 
     def update_transform(self):
         # Replaced the PyCPD muX and muY because couldnt calcl myY the same (no self.P)
@@ -80,7 +81,6 @@ class rigid_registration(expectation_maximization_registration):
         # necessary any more.
         if self.sigma2 <= 0:
             self.sigma2 = self.tolerance / 10
-
 
     def get_registration_parameters(self):
         return self.s, self.R, self.t
