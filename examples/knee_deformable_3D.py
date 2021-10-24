@@ -1,12 +1,10 @@
 from functools import partial
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from cycpd import deformable_registration, rigid_registration
+from cycpd import deformable_registration
 import numpy as np
-import time
+import argparse
 
-
-def visualize(iteration, error, X, Y, ax, fig, tilt=0, rotation_factor=5):
+def visualize(iteration, error, X, Y, ax, fig, tilt=0, rotation_factor=5, save_fig=False):
     plt.cla()
     ax[0].cla()
     ax[1].cla()
@@ -24,11 +22,12 @@ def visualize(iteration, error, X, Y, ax, fig, tilt=0, rotation_factor=5):
     ax[1].view_init(tilt, rotation_factor * iteration)
 
     plt.draw()
-    fig.savefig('deformable_{:04}.tiff'.format(iteration))  # Used for making gif.
-    # plt.pause(0.001)
+    if save_fig is True:
+        fig.savefig('deformable_{:04}.tiff'.format(iteration))  # Used for making gif.
+    plt.pause(0.001)
 
 
-def main():
+def main(save=False):
     X = np.loadtxt('../data/surface_points_bone_deformable_target.npy')
 
     # Below are points from a completely different knee that were already rigidly registered to X
@@ -44,7 +43,7 @@ def main():
     ax1 = fig.add_subplot(121, projection='3d')
     ax2 = fig.add_subplot(122, projection='3d')
     ax = [ax1, ax2]
-    callback = partial(visualize, ax=ax, fig=fig)
+    callback = partial(visualize, ax=ax, fig=fig, save_fig=save)
 
     reg = deformable_registration(**{'X': X,
                                      'Y': Y,
@@ -74,4 +73,10 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description='Rigid registration example')
+    parser.add_argument('-s', '--save', type=bool, nargs='+', default=False,
+                        help='True or False - to save figures of the example for a GIF etc.')
+    args = parser.parse_args()
+    print(args)
+
+    main(**vars(args))
