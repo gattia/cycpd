@@ -1,8 +1,10 @@
-from functools import partial
-import matplotlib.pyplot as plt
-from cycpd import deformable_registration
-import numpy as np
 import argparse
+from functools import partial
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+from cycpd import deformable_registration
 
 
 def visualize(iteration, error, X, Y, ax, fig, tilt=0, rotation_factor=5, save_fig=False):

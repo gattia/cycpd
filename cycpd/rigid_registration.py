@@ -1,8 +1,11 @@
-from builtins import super
-import numpy as np
 import time
-from .expectation_maximization_registration import expectation_maximization_registration
+from builtins import super
+
+import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
+
+from .expectation_maximization_registration import \
+    expectation_maximization_registration
 
 
 class rigid_registration(expectation_maximization_registration):

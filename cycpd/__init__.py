@@ -1,3 +1,3 @@
 from .affine_registration import affine_registration
+from .deformable_registration import deformable_registration, gaussian_kernel
 from .rigid_registration import rigid_registration
-from .deformable_registration import gaussian_kernel, deformable_registration

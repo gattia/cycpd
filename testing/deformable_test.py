@@ -1,7 +1,7 @@
-import pytest
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
-from cycpd import gaussian_kernel, deformable_registration
+
+from cycpd import deformable_registration
 
 
 def test_2d(timing=False, verbose=False, print_reg_params=False):

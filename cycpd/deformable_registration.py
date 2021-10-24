@@ -1,7 +1,10 @@
-from builtins import super
-import numpy as np
 import time
-from .expectation_maximization_registration import expectation_maximization_registration
+from builtins import super
+
+import numpy as np
+
+from .expectation_maximization_registration import \
+    expectation_maximization_registration
 
 
 def gaussian_kernel(X, beta, Y=None):

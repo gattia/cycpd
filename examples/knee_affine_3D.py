@@ -1,8 +1,10 @@
-from functools import partial
-import matplotlib.pyplot as plt
-from cycpd import affine_registration
-import numpy as np
 import argparse
+from functools import partial
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+from cycpd import affine_registration
 
 
 def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5, save_fig=False):
