@@ -1,11 +1,11 @@
 from functools import partial
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 from cycpd import affine_registration
 import numpy as np
+import argparse
 
 
-def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):
+def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5, save_fig=False):
     plt.cla()
     ax[0].cla()
     ax[1].cla()
@@ -27,7 +27,7 @@ def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):
     plt.pause(0.001)
 
 
-def main():
+def main(save=False):
     theta = np.pi / 6.0
     Y = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
     Hxy = 0
@@ -52,7 +52,7 @@ def main():
     ax1 = fig.add_subplot(121, projection='3d')
     ax2 = fig.add_subplot(122, projection='3d')
     ax = [ax1, ax2]
-    callback = partial(visualize, ax=ax, fig=fig)
+    callback = partial(visualize, ax=ax, fig=fig, save_fig=save)
 
     reg = affine_registration(**{'X': X, 'Y': Y})
     reg.register(callback)
@@ -60,4 +60,10 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description='Rigid registration example')
+    parser.add_argument('-s', '--save', type=bool, nargs='+', default=False,
+                        help='True or False - to save figures of the example for a GIF etc.')
+    args = parser.parse_args()
+    print(args)
+
+    main(**vars(args))
