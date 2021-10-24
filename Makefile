@@ -13,7 +13,7 @@ test:
 	pytest
 
 dev:
-	pip install pytest black isort
+	pip install pytest black isort twine
 
 requirements:
 	python -m pip install -r requirements.txt

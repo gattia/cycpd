@@ -60,3 +60,13 @@ jobs:
       - name: Test with pytest
         run: |
           make test
+      
+      # Upload to TestPyPI
+      - name: Build and Upload to TestPyPI
+        run: |
+          python setup.py sdist bdist_wheel
+          python -m twine upload dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.TWINE_TEST_TOKEN }}
+          TWINE_REPOSITORY: testpypi
