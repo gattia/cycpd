@@ -1,5 +1,6 @@
 # Cython-CPD
 [![Build Status](https://travis-ci.com/gattia/cycpd.svg?branch=master)](https://travis-ci.com/gattia/cycpd)
+![Build Status](https://github.com/gattia/cycpd/actions/workflows/python-package.yml/badge.svg)
 
 Numpy + Cython Implementation of the Coherent Point Drift Algorithm.
 
