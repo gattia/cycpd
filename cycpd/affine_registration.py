@@ -3,8 +3,7 @@ from builtins import super
 
 import numpy as np
 
-from .expectation_maximization_registration import \
-    expectation_maximization_registration
+from .expectation_maximization_registration import expectation_maximization_registration
 
 
 class affine_registration(expectation_maximization_registration):
