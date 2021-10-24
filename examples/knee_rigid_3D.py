@@ -34,7 +34,11 @@ def main():
     t = np.array([0.5, 1.0, -2.0])
 
     Y = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
-    X = np.dot(Y, R) + t
+    # the below line will let testing of registering two bones (the same) with a known rotation and
+    # translation between them. 
+    # X = np.dot(Y, R) + t
+    ## The below line will let testing of registration using two different bones. 
+    X = np.loadtxt('../data/surface_points_bone_2_5k_points.npy')
 
     fig = plt.figure(figsize=plt.figaspect(0.5))
     ax1 = fig.add_subplot(121, projection='3d')
