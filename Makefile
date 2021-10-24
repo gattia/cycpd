@@ -15,11 +15,12 @@ test:
 dev:
 	pip install pytest black isort
 
+requirements:
+	python -m pip install -r requirements.txt
+
 build-cython:
 	python setup.py build_ext -i --force
 
 build:
-	python -m pip install --upgrade pip
-	python -m pip install -r requirements.txt
 	python setup.py build_ext -i --force
 	python setup.py install
