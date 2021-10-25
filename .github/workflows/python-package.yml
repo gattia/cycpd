@@ -63,13 +63,14 @@ jobs:
       
       # Upload to TestPyPI
       - name: Build and Upload to TestPyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.TWINE_TEST_TOKEN }}
+          TWINE_REPOSITORY: https://test.pypi.org/legacy/
         run: |
           echo $TWINE_USERNAME
           echo $TWINE_PASSWORD
           echo $TWINE_REPOSITORY
           python setup.py sdist bdist_wheel
-          python -m twine upload -u __token__ -p ${{ secrets.TWINE_TEST_TOKEN }} --repository-url https://test.pypi.org/legacy/  dist/*
-        # env:
-        #   TWINE_USERNAME: __token__
-        #   TWINE_PASSWORD: ${{ secrets.TWINE_TEST_TOKEN }}
-        #   TWINE_REPOSITORY: https://test.pypi.org/legacy/
+          twine upload dist/*
+        
