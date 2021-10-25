@@ -39,10 +39,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # os: [macos-latest, ubuntu-latest]
-        # python-version: [3.7, 3.8, 3.9]
-        os: [macos-latest]
-        python-version: [3.7]
+        os: [macos-latest, ubuntu-latest]
+        python-version: [3.7, 3.8, 3.9]
+        # os: [macos-latest]
+        # python-version: [3.7]
 
     steps:
       - uses: actions/checkout@v2
@@ -59,9 +59,9 @@ jobs:
       - name: Install Cython code
         run: |
           make build-cython
-      # - name: Test with pytest
-      #   run: |
-      #     make test
+      - name: Test with pytest
+        run: |
+          make test
       
       # Upload to TestPyPI
       - name: Build and Upload to TestPyPI
