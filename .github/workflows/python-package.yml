@@ -64,6 +64,9 @@ jobs:
       # Upload to TestPyPI
       - name: Build and Upload to TestPyPI
         run: |
+          echo $TWINE_USERNAME
+          echo $TWINE_PASSWORD
+          echo $TWINE_REPOSITORY
           python setup.py sdist bdist_wheel
           python -m twine upload dist/*
         env:
