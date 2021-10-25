@@ -13,7 +13,7 @@ test:
 	pytest
 
 dev:
-	pip install pytest black isort twine
+	pip install pytest black isort twine wheel
 
 requirements:
 	python -m pip install -r requirements.txt
