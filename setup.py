@@ -14,9 +14,13 @@ try:
 except ImportError:
     ext_modules = None
 
+try: import numpy as np
+except ImportError:
+    raise Exception('Numpy must be installed to build this pacakge.\n Install with `pip install .` or run `pip install -r requirements.txt` before building.')
+
 setup(
     name="cycpd",
-    version="0.0.5",
+    version="0.0.6",
     description="Numpy + Cython Implementation of the Coherent Point Drift Algorithm",
     long_description=readme(),
     url="",
@@ -33,6 +37,7 @@ setup(
     author_email="anthony@neuralseg.com",
     license="MIT",
     ext_modules=ext_modules,
+    include_dirs=np.get_include(),
     packages=["cycpd"],
     install_requires=["numpy", "Cython"],
     zip_safe=False,
