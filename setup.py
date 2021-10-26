@@ -20,7 +20,7 @@ except ImportError:
 
 setup(
     name="cycpd",
-    version="0.0.7",
+    version="0.0.8",
     description="Numpy + Cython Implementation of the Coherent Point Drift Algorithm",
     long_description=readme(),
     url="",
@@ -39,6 +39,6 @@ setup(
     ext_modules=ext_modules,
     include_dirs=np.get_include(),
     packages=["cycpd"],
-    install_requires=["numpy", "Cython"],
+    install_requires=["numpy", "Cython>=0.29"],
     zip_safe=False,
 )
