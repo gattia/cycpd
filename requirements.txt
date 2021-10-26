@@ -1,2 +1,2 @@
 numpy
-Cython
+Cython>=0.29
