@@ -9,7 +9,7 @@ def readme():
 try:
     from Cython.Build import cythonize
 
-    ext_modules = cythonize([Extension("cython_functions", ["cycpd/cython/cython_functions.pyx"])])
+    ext_modules = cythonize([Extension(name="cython_functions", sources=["cycpd/cython/cython_functions.pyx"])])
 
 except ImportError:
     ext_modules = None
@@ -20,7 +20,7 @@ except ImportError:
 
 setup(
     name="cycpd",
-    version="0.0.8",
+    version="0.0.13",
     description="Numpy + Cython Implementation of the Coherent Point Drift Algorithm",
     long_description=readme(),
     url="",
@@ -37,8 +37,9 @@ setup(
     author_email="anthony@neuralseg.com",
     license="MIT",
     ext_modules=ext_modules,
-    include_dirs=np.get_include(),
+    # include_dirs=[np.get_include()],
     packages=["cycpd"],
-    install_requires=["numpy", "Cython>=0.29"],
+    setup_requires=["Cython>=0.29"],
+    install_requires=["numpy"],
     zip_safe=False,
 )

@@ -42,7 +42,7 @@ jobs:
         # os: [macos-latest, ubuntu-latest]
         # python-version: [3.7, 3.8, 3.9]
         os: [macos-latest]
-        python-version: [3.7]
+        python-version: [3.7, 3.8, 3.9]
 
     steps:
       - uses: actions/checkout@v2
@@ -68,10 +68,14 @@ jobs:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.TWINE_TEST_TOKEN }}
           TWINE_REPOSITORY_URL: https://test.pypi.org/legacy/
+          # To install using test.pypi if there are extra dependencies
+          # you need to tell test.pypi where to find them (otherwise it will look
+          # in its own repositories and not find them). This can be done by providing
+          # the flag: --extra-index-url https://pypi.org/simple
         run: |
           echo $TWINE_USERNAME
           echo $TWINE_PASSWORD
           echo $TWINE_REPOSITORY
           python setup.py sdist bdist_wheel
-          twine upload dist/*
+          twine upload --skip-existing dist/*
         
