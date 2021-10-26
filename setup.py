@@ -16,14 +16,13 @@ except ImportError:
 
 setup(
     name="cycpd",
-    version="0.0.1",
+    version="0.0.5",
     description="Numpy + Cython Implementation of the Coherent Point Drift Algorithm",
     long_description=readme(),
     url="",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "License :: OSI Approved :: MIT License",
-        # 'Programming Language :: Python :: 2.7',
         # 'Programming Language :: Python :: 3.4',
         # 'Programming Language :: Python :: 3.5',
         # 'Programming Language :: Python :: 3.6',
@@ -35,6 +34,6 @@ setup(
     license="MIT",
     ext_modules=ext_modules,
     packages=["cycpd"],
-    install_requires=["numpy", "future", "Cython"],
+    install_requires=["numpy", "Cython"],
     zip_safe=False,
 )
