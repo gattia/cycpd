@@ -30,7 +30,9 @@ exclude = '''
 
 # Information needed for cibuildwheel
 [tool.cibuildwheel]
+# build options: https://cibuildwheel.readthedocs.io/en/stable/options/#build-selection
 build = ["cp37-*", "cp38-*", "cp39-*"]
 
+# testing info: https://cibuildwheel.readthedocs.io/en/stable/options/#testing
 test-command = "pytest {project}"
 test-requires = ["pytest"]
