@@ -51,8 +51,8 @@ jobs:
       # build "built-distributions" for most Mac/Linux versions. 
       - name: Build built-distributions for MacOS & Linux
         run: |
-        cibuildwheel --platform linux .
-        cibuildwheel --platform macos .
+          cibuildwheel --platform linux .
+          cibuildwheel --platform macos .
 
       # Push distribution to PyPi (test?)
       - name: Build and Upload to PyPI
