@@ -7,3 +7,4 @@ cython_functions.c
 __pycache__
 *.so
 .eggs/
+wheelhouse
