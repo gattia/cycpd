@@ -11,23 +11,17 @@ on:
 
 jobs:
 
-  build:
-    # needs: lint
-    runs-on: ${{ matrix.os }}
+  build_sdist:
+    runs-on: linux-latest
     strategy:
       fail-fast: false
-      matrix:
-        os: [macos-latest]
-        python-version: [3.7] 
-        # Use macos because it can be used with cibuildwheel 
-        # to make mac & linux distributions
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python 
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.7
       
       - name: Install dependencies
         run: |
@@ -49,22 +43,44 @@ jobs:
         run: |
           python setup.py sdist -d wheelhouse
       
-      # build "built-distributions" for most Mac/Linux versions. 
-      - name: Build built-distributions for MacOS & Linux
-        run: |
-          cibuildwheel --platform linux .
-          cibuildwheel --platform macos .
+      - uses: actions/upload-artifact@v2
+        with:
+          path: ./wheelhouse/*.tar.gz
+    
+  build_wheels:
+    name: Build wheels
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-2019, macos-latest]     
+    
+    steps:
+      - uses: actions/checkout@v2
 
-      # Push distribution to PyPi (test?)
-      - name: Build and Upload to PyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.TWINE_TEST_TOKEN }}
-          TWINE_REPOSITORY_URL: https://test.pypi.org/legacy/
-          # To install using test.pypi if there are extra dependencies
-          # you need to tell test.pypi where to find them (otherwise it will look
-          # in its own repositories and not find them). This can be done by providing
-          # the flag: --extra-index-url https://pypi.org/simple
-        run: |          
-          twine upload --skip-existing wheelhouse/*
-        
+      - uses: actions/setup-python@v2
+        name: Install Python
+        with:
+          python-version: '3.7'
+      
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.2.2
+      
+      - uses: actions/upload-artifact@v2
+        with:
+            path: ./wheelhouse/*.whl
+  
+  upload_pypi:
+    needs: [build_sdist, build_wheels]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: artifact
+          path: dist
+      
+      - uses: pypa/gh-action-pypi-publish@v1.4.2
+        with:
+          user: __token__
+          password: ${{ secrets.TWINE_TEST_TOKEN }}
+          repository_url: https://test.pypi.org/legacy/
