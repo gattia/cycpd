@@ -1,7 +1,10 @@
+import os
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
 
 from cycpd import rigid_registration
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
 def test_2d(timing=False, verbose=False, print_reg_params=False):
@@ -12,9 +15,10 @@ def test_2d(timing=False, verbose=False, print_reg_params=False):
     t = np.array([0.5, 1.0])
 
     try:
-        Y = np.loadtxt("data/fish_target.txt")
+        Y = np.loadtxt(os.path.join(dir_path, "..", "data", "fish_target.txt"))        
     except OSError:
-        Y = np.loadtxt("../data/fish_target.txt")
+        raise Exception('Error finding data!')
+
     X = np.dot(Y, R) + np.tile(t, (np.shape(Y)[0], 1))
 
     reg = rigid_registration(
@@ -39,9 +43,10 @@ def test_3d(timing=False, verbose=False, print_reg_params=False):
     t = np.array([0.5, 1.0, -2.0])
 
     try:
-        Y = np.loadtxt("data/surface_points_bone_1_5k_points.npy")
+        Y = np.loadtxt(os.path.join(dir_path, "..", "data", "surface_points_bone_1_5k_points.npy"))        
     except OSError:
-        Y = np.loadtxt("../data/surface_points_bone_1_5k_points.npy")
+        raise Exception('Error finding data!')
+
     X = np.dot(Y, R) + np.tile(t, (np.shape(Y)[0], 1))
 
     reg = rigid_registration(

@@ -27,3 +27,10 @@ exclude = '''
   )/
 )
 '''
+
+# Information needed for cibuildwheel
+[tool.cibuildwheel]
+build = ["cp37-*", "cp38-*", "cp39-*"]
+
+test-command = "pytest {project}"
+test-requires = ["pytest"]
