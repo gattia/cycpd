@@ -1,4 +1,5 @@
 import os
+
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
 
@@ -16,7 +17,7 @@ def test_2d(timing=False, verbose=False, print_reg_params=False):
     try:
         Y = np.loadtxt(os.path.join(dir_path, "..", "data", "fish_target.txt"))
     except OSError:
-        raise Exception('Error finding data!')
+        raise Exception("Error finding data!")
     X = np.dot(Y, B) + np.tile(t, (np.shape(Y)[0], 1))
 
     reg = affine_registration(
@@ -40,7 +41,7 @@ def test_3d(timing=False, verbose=False, print_reg_params=False):
     try:
         Y = np.loadtxt(os.path.join(dir_path, "..", "data", "surface_points_bone_1_5k_points.npy"))
     except OSError:
-        raise Exception('Error finding data!')
+        raise Exception("Error finding data!")
     X = np.dot(Y, B) + np.tile(t, (np.shape(Y)[0], 1))
 
     reg = affine_registration(

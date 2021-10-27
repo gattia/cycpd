@@ -9,14 +9,19 @@ def readme():
 try:
     from Cython.Build import cythonize
 
-    ext_modules = cythonize([Extension(name="cython_functions", sources=["cycpd/cython/cython_functions.pyx"])])
+    ext_modules = cythonize(
+        [Extension(name="cython_functions", sources=["cycpd/cython/cython_functions.pyx"])]
+    )
 
 except ImportError:
     ext_modules = None
 
-try: import numpy as np
+try:
+    import numpy as np
 except ImportError:
-    raise Exception('Numpy must be installed to build this pacakge.\n Install with `pip install .` or run `pip install -r requirements.txt` before building.')
+    raise Exception(
+        "Numpy must be installed to build this pacakge.\n Install with `pip install .` or run `pip install -r requirements.txt` before building."
+    )
 
 setup(
     name="cycpd",

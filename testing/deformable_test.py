@@ -1,4 +1,5 @@
 import os
+
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
 
@@ -13,11 +14,11 @@ def test_2d(timing=False, verbose=False, print_reg_params=False):
     try:
         X = np.loadtxt(os.path.join(dir_path, "..", "data", "fish_target.txt"))
     except OSError:
-        raise Exception('Error finding data!')
+        raise Exception("Error finding data!")
     try:
         Y = np.loadtxt(os.path.join(dir_path, "..", "data", "fish_source.txt"))
     except OSError:
-        raise Exception('Error finding data!')
+        raise Exception("Error finding data!")
 
     reg = deformable_registration(
         **{"X": X, "Y": Y, "verbose": verbose, "print_reg_params": print_reg_params}
@@ -42,16 +43,18 @@ def test_3d(
     if timing is True:
         tic = time.time()
     try:
-        X = np.loadtxt(os.path.join(dir_path, "..", "data", "surface_points_bone_deformable_target.npy"))
+        X = np.loadtxt(
+            os.path.join(dir_path, "..", "data", "surface_points_bone_deformable_target.npy")
+        )
     except OSError:
-        raise Exception('Error finding data!')
+        raise Exception("Error finding data!")
     # Below are points from a completely different knee that were already rigidly registered to X
     # If there isnt something to make them "somewhat" close to one another, then the registration fails.
     # Therefore, this first step was performed to improve testing.
     try:
         Y = np.loadtxt(os.path.join(dir_path, "..", "data", "surface_points_bone_1_5k_points.npy"))
     except OSError:
-        raise Exception('Error finding data!')
+        raise Exception("Error finding data!")
 
     # These will not perfectly align and they will not even be "done" when we get to iteration 100.
     # But this is a good starting point test.
