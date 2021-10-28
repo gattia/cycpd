@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "wheel", "Cython >= 0.29", "numpy"]
+requires = ["setuptools>=45", "wheel", "Cython >= 0.29", "numpy", "setuptools_scm>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [tool.isort]
@@ -32,9 +32,12 @@ exclude = '''
 [tool.cibuildwheel]
 # build options: https://cibuildwheel.readthedocs.io/en/stable/options/#build-selection
 build = ["cp37-*", "cp38-*", "cp39-*"]
-skip = ["*-win32", "*-manylinux_i686", "*aarch64", "*ppc64le", "*s390x", "*musllinux*"]
-x86_64
+skip = ["*-win32", "*i686", "*aarch64", "*ppc64le", "*s390x", "*musllinux*"]
 
 # testing info: https://cibuildwheel.readthedocs.io/en/stable/options/#testing
 test-command = "pytest {project}"
 test-requires = ["pytest"]
+
+# https://github.com/pypa/setuptools_scm/
+[tool.setuptools_scm]
+
