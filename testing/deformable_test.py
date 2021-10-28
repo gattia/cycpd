@@ -22,11 +22,11 @@ def test_2d(timing=False, verbose=False, print_reg_params=False):
 
     reg = deformable_registration(
         **{
-            "X": X, 
-            "Y": Y, 
-            "verbose": verbose, 
+            "X": X,
+            "Y": Y,
+            "verbose": verbose,
             "print_reg_params": print_reg_params,
-            "max_iterations": 500
+            "max_iterations": 500,
         }
     )
     TY, _ = reg.register()
