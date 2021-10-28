@@ -21,7 +21,13 @@ def test_2d(timing=False, verbose=False, print_reg_params=False):
         raise Exception("Error finding data!")
 
     reg = deformable_registration(
-        **{"X": X, "Y": Y, "verbose": verbose, "print_reg_params": print_reg_params}
+        **{
+            "X": X, 
+            "Y": Y, 
+            "verbose": verbose, 
+            "print_reg_params": print_reg_params,
+            "max_iterations": 500
+        }
     )
     TY, _ = reg.register()
     assert_array_almost_equal(X, TY, decimal=1)
@@ -62,7 +68,7 @@ def test_3d(
         **{
             "X": X,
             "Y": Y,
-            "max_iterations": 100,
+            "max_iterations": 500,
             "alpha": 0.1,
             "beta": 3,
             "verbose": verbose,
