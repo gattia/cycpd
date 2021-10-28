@@ -39,5 +39,5 @@ test-command = "pytest {project}"
 test-requires = ["pytest"]
 
 # https://github.com/pypa/setuptools_scm/
-[tool.setuptools_scm]
+# [tool.setuptools_scm]
 
