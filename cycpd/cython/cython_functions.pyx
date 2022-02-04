@@ -147,6 +147,12 @@ def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N,
 
     cdef my_type[:, :] X_view = X
     cdef my_type[:, :] TY_view = TY
+    
+	
+    # probP: probability matrix, shape=(M,N)
+    # probP[m,n] represents the probability the m-th source point Y[m,:] corresponds to the n-th target point X[n,:]
+    probP = np.zeros((M, N), dtype=dtype)
+    cdef my_type[:,:] probP_view = probP
 
      # Make P array
     # cdef my_type[:] P
@@ -178,8 +184,11 @@ def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N,
                 diff = diff * diff
                 tmp_total += diff
             P_view[m] = c_exp(tmp_total/ksig)
+            probP_view[m, n] = P_view[m] #c_exp(tmp_total/ksig)
             den += P_view[m]
         den += w_tmp
+        for m in range(M):
+            probP_view[m, n] = probP_view[m, n] / den
         Pt1_view[n] = 1-w_tmp/den
 
         for d in range(D):
@@ -198,7 +207,7 @@ def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N,
 
     E += D * Np * c_log(sigma2)/2
 
-    return P1, Pt1, Px, Np, E
+    return probP, P1, Pt1, Px, Np, E
 
 
 

@@ -116,7 +116,7 @@ class expectation_maximization_registration(object):
             print('['+ '='* percent_done + ' ' * (72-percent_done) + ']')
 
     def expectation(self):
-        self.P1, self.Pt1, self.PX, self.Np, self.E = cy.expectation_2(self.X,
+        self.P, self.P1, self.Pt1, self.PX, self.Np, self.E = cy.expectation_2(self.X,
                                                                        self.TY,
                                                                        self.sigma2,
                                                                        self.M,
