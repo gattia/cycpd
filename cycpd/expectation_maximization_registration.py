@@ -1,7 +1,7 @@
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
 import time
-from cython_functions import *
+import cython_functions as cy
 
 class expectation_maximization_registration(object):
 
@@ -54,7 +54,7 @@ class expectation_maximization_registration(object):
     def register(self, callback=lambda **kwargs: None):
         tic = time.time()
         self.transform_point_cloud()
-        self.sigma2 = initialize_sigma2(self.X, self.Y)
+        self.sigma2 = cy.initialize_sigma2(self.X, self.Y)
         toc = time.time()
         self.time_to_initiate_registration = toc-tic
         while (self.iteration < self.max_iterations) and (self.err > self.tolerance) and (self.sigma2 > np.finfo(float).eps):
@@ -116,13 +116,13 @@ class expectation_maximization_registration(object):
             print('['+ '='* percent_done + ' ' * (72-percent_done) + ']')
 
     def expectation(self):
-        self.P1, self.Pt1, self.PX, self.Np, self.E = expectation_2(self.X,
-                                                                    self.TY,
-                                                                    self.sigma2,
-                                                                    self.M,
-                                                                    self.N,
-                                                                    self.D,
-                                                                    self.w)
+        self.P1, self.Pt1, self.PX, self.Np, self.E = cy.expectation_2(self.X,
+                                                                       self.TY,
+                                                                       self.sigma2,
+                                                                       self.M,
+                                                                       self.N,
+                                                                       self.D,
+                                                                       self.w)
 
 
     def maximization(self):

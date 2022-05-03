@@ -1,5 +1,5 @@
 # Cython-CPD
-[![Build Status](https://travis-ci.com/gattia/cycpd.svg?branch=master)](https://travis-ci.com/gattia/cycpd)
+![Build Status](https://github.com/gattia/cycpd/actions/workflows/python-package.yml/badge.svg)
 
 Numpy + Cython Implementation of the Coherent Point Drift Algorithm.
 
@@ -70,9 +70,9 @@ There are three exmples currently implemented. They all show registration of two
 These examples can be run by navigating to the examples folder (after installing) and running: 
 
 ```
-python knee_rigid.py
-python knee_affine.py
-python knee_deformable.py
+python knee_rigid_3D.py
+python knee_affine_3D.py
+python knee_deformable_3D.py
 ```
 
 ## Rigid

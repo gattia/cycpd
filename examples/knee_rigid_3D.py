@@ -1,12 +1,12 @@
 from functools import partial
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 from cycpd import rigid_registration
 import numpy as np
-import time
+import argparse
 
 
-def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):
+
+def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5, save_fig=False):
     plt.cla()
     ax[0].cla()
     ax[1].cla()
@@ -24,23 +24,29 @@ def visualize(iteration, error, X, Y, ax, fig, tilt=25, rotation_factor=5):
     ax[1].view_init(tilt, rotation_factor * iteration)
 
     plt.draw()
-    # fig.savefig('rigid_{:04}.tiff'.format(iteration))  # Used for making gif.
+    if save_fig is True:
+        fig.savefig('rigid_{:04}.tiff'.format(iteration))  # Used for making gif.
+    
     plt.pause(0.001)
 
 
-def main():
+def main(save=False):
     theta = np.pi / 6.0
     R = np.array([[np.cos(theta), -np.sin(theta), 0], [np.sin(theta), np.cos(theta), 0], [0, 0, 1]])
     t = np.array([0.5, 1.0, -2.0])
 
     Y = np.loadtxt('../data/surface_points_bone_1_5k_points.npy')
-    X = np.dot(Y, R) + t
+    # the below line will let testing of registering two bones (the same) with a known rotation and
+    # translation between them. 
+    # X = np.dot(Y, R) + t
+    ## The below line will let testing of registration using two different bones. 
+    X = np.loadtxt('../data/surface_points_bone_2_5k_points.npy')
 
     fig = plt.figure(figsize=plt.figaspect(0.5))
     ax1 = fig.add_subplot(121, projection='3d')
     ax2 = fig.add_subplot(122, projection='3d')
     ax = [ax1, ax2]
-    callback = partial(visualize, ax=ax, fig=fig)
+    callback = partial(visualize, ax=ax, fig=fig, save_fig=save)
 
     reg = rigid_registration(**{'X': X, 'Y': Y})
     # reg = rigid_registration(**{'X': X, 'Y': Y, 'scale': False})
@@ -52,4 +58,10 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description='Rigid registration example')
+    parser.add_argument('-s', '--save', type=bool, nargs='+', default=False,
+                        help='True or False - to save figures of the example for a GIF etc.')
+    args = parser.parse_args()
+    print(args)
+
+    main(**vars(args))
