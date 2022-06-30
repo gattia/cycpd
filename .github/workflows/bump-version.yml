@@ -1,0 +1,41 @@
+name: Bump version
+on:
+  push:
+    branches:
+      - master
+jobs:
+  tagbump:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: true
+  
+  versionbump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          make dev
+          make requirements
+      
+      - name: Install / update package version #
+        run: |
+          python setup.py install
+      
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          add: ''

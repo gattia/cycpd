@@ -1,0 +1,92 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: pypi
+
+on:
+  push:
+    branches: [ development ]
+  pull_request:
+    branches: [ development ]
+
+jobs:
+
+  build_sdist:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          make dev
+          make requirements
+          pip install cibuildwheel
+      
+      - name: Install Cython code
+        run: |
+          make build-cython
+      
+      - name: Test with pytest
+        run: |
+          make test
+      
+      # build source distribution for versions wheels arent build. 
+      - name: Build source distribution
+        run: |
+          python setup.py sdist -d wheelhouse
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          path: ./wheelhouse/*.tar.gz
+    
+  build_wheels:
+    name: Build wheels
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-2019, macos-latest]     
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v3
+        name: Install Python
+        with:
+          python-version: '3.7'
+      
+      - name: Install cibuildwheel
+        run: python -m pip install cibuildwheel==2.7.0
+
+      - name: Build wheels
+        run: python -m cibuildwheel --output-dir wheelhouse
+
+      # - name: Build wheels
+      #   uses: pypa/cibuildwheel@v2.2.2
+      
+      - uses: actions/upload-artifact@v3
+        with:
+            path: ./wheelhouse/*.whl
+  
+  upload_pypi:
+    needs: [build_sdist, build_wheels]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: artifact
+          path: dist
+      
+      - uses: pypa/gh-action-pypi-publish@v1.4.2
+        with:
+          user: __token__
+          password: ${{ secrets.TWINE_TEST_TOKEN }}
+          repository_url: https://test.pypi.org/legacy/

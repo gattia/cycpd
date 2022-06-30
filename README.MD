@@ -1,4 +1,5 @@
 # Cython-CPD
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)<br>
 ![Build Status](https://github.com/gattia/cycpd/actions/workflows/python-package.yml/badge.svg)
 
 Numpy + Cython Implementation of the Coherent Point Drift Algorithm.
@@ -28,13 +29,28 @@ The next steps will be to:
 
 # Installation
 
+You should be able to install this by cloning, navigating to this root directory, and installing with pip:
+
+```
+git clone https://github.com/gattia/cycpd
+cd cycpd
+pip install .
+```
+
+## Cython
+If the above didnt work... previous versions of `cycpd` had issues with Cython - if you have cython related issues, the following may be helpful: 
+
 Must have Cython installed to build package
 
-`pip install cython`
+```bash
+pip install cython
+```
 
 or
 
-`conda install -c anaconda cython`
+```
+conda install -c anaconda cython
+```
 
 For any operating system you will have to have a C compiler. If you do not have a C compiler you will get errors when building cycpd. You can often follow these errors to install the appropriate packages. 
 
@@ -56,16 +72,19 @@ You may need newer versions of Visual Studio and it's tools, but thats the one t
 
 With cython installed:
 
-```
-git clone https://github.com/gattia/cycpd
-cd cycpd
-sudo python setup.py install
-```
+
 
 
 # Examples
 
-There are three exmples currently implemented. They all show registration of two 3D bones with 5k points each. The Rigid and Affine both apply transformations to a bone and then use CPD to return it back to its original shape. The deformable (non-rigid) warps the bone of one person onto a version of that same bone warped to best fit another person. The deformable example will end at 100 epochs (default), at which time it will not have converged fully - it seems to be ossciliating here to find the best fit. 
+To run the examples, you will also need `matplotlib` which is not required for the base package. This can be installed using: 
+
+```bash
+pip install matplotlib
+```
+
+
+There are three exmples currently implemented. They all show registration of two 3D bones with 5k points each. The Affine applies a transformation to a bone and then use CPD to return it back to its original shape. The rigid and deformable (non-rigid) warps the bone of one person onto a version of that same bone warped to best fit another person. The deformable example will end at 100 epochs (default), at which time it will not have converged fully.
 
 These examples can be run by navigating to the examples folder (after installing) and running: 
 
@@ -89,15 +108,19 @@ python knee_deformable_3D.py
 
 # Tests
 ## Regular Tests
-Testing includes rigid, affine, and deformable examples. The rigid, affine, and 2D deformable all test the ensure the algorihtm recovers a predefined transformation. The 3D deformable tests to ensure that the resulting registrtaion has errors (between a mesh and the closest point on the other mesh) below a pre-defined tolerance. 
+Testing includes rigid, affine, and deformable examples. The rigid, affine, and 2D deformable all test to ensure the algorithm recovers a predefined transformation. The 3D deformable tests to ensure that the resulting registrtaion has errors (between a mesh and the closest point on the other mesh) below a pre-defined tolerance. 
 
-These tests are continually run by TravisCI for all new merges/builds. All of these tests can be run by navigating to the cpd directory and running: 
+These tests are continually run by Github Actions for all new merges/builds. All of these tests can be run by navigating to the cpd directory and running: 
 
-`pytest`
+```bash
+pytest
+```
 
 Inidividual tests can be run by running 
 
-`python -m pytests path_to_test`
+```
+python -m pytests path_to_test
+```
 
 `path_to_test` need be replaced by the path to the approriate test. If in the testing directory, it can be just `affine_test.py` or similar. If not in testing directory, will need to specify full (absolute or relative) path.
 
@@ -109,6 +132,8 @@ If the test files are run directly, e.g.,:
 
 the same tests that are run by pytest will be conducted. Running these files directly will also time the analyses and print the time to do the analysis. Running this way will also run the diagnostics that are built in to the functions and will print those out. 
 
+# Contributing
+If you want to contribute, please read over the documentaiton in `CONTRIBUTING.md`
 
 # License
 MIT License

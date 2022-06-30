@@ -1,10 +1,15 @@
-from builtins import super
-import numpy as np
 import time
+from builtins import super
+
+import numpy as np
+
 from .expectation_maximization_registration import expectation_maximization_registration
 
-class affine_registration(expectation_maximization_registration):
 
+class affine_registration(expectation_maximization_registration):
+    """
+    
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         tic = time.time()
@@ -17,19 +22,35 @@ class affine_registration(expectation_maximization_registration):
         self.time_to_initialize_registration = toc - tic
 
     def update_transform(self):
+        """
+        Update the transform parameters.
+        """
         self.muX = np.divide(np.matmul(self.X.T, self.Pt1), self.Np)
-        self.muY = np.divide(np.matmul(self.Y.T, self.P1),
-                             self.Np)  # changed previous code from PyCPD because we no longer store self.P
+        self.muY = np.divide(
+            np.matmul(self.Y.T, self.P1), self.Np
+        )  # changed previous code from PyCPD because we no longer store self.P
 
-        self.B1 = np.matmul(self.PX.T, self.Y) - self.Np * np.matmul(self.muX[:,None], self.muY[:,None].T)
-        self.B2 = np.matmul((self.Y * self.P1[:,None]).T, self.Y) - self.Np * np.matmul(self.muY[:, None], self.muY[:,None].T)
+        self.B1 = np.matmul(self.PX.T, self.Y) - self.Np * np.matmul(
+            self.muX[:, None], self.muY[:, None].T
+        )
+        self.B2 = np.matmul((self.Y * self.P1[:, None]).T, self.Y) - self.Np * np.matmul(
+            self.muY[:, None], self.muY[:, None].T
+        )
         self.B = np.linalg.solve(self.B2.T, self.B1.T).T
 
-        self.t = np.squeeze(self.muX[:,None] - np.matmul(self.B, self.muY[:,None]))
+        self.t = np.squeeze(self.muX[:, None] - np.matmul(self.B, self.muY[:, None]))
 
         self.err = abs(self.E - self.E_old)
 
     def transform_point_cloud(self, Y=None):
+        """
+        Transform a point cloud.
+        
+        Parameters
+        ----------
+        Y : array_like, optional
+            The point cloud to transform.
+        """
         if Y is None:
             self.TY = np.dot(self.Y, self.B.T) + self.t
             return
@@ -37,14 +58,27 @@ class affine_registration(expectation_maximization_registration):
             return np.dot(Y, self.B.T) + self.t
 
     def update_variance(self):
+        """
+        Update the variance.
+        """
         self.sigma2_prev = self.sigma2
-        A = np.sum(np.square(self.X) * self.Pt1[:,None])
-        B = self.Np * np.matmul(self.muX[:,None].T, self.muX[:,None])
+        A = np.sum(np.square(self.X) * self.Pt1[:, None])
+        B = self.Np * np.matmul(self.muX[:, None].T, self.muX[:, None])
         C = np.trace(np.matmul(self.B1, self.B.T))
-        self.sigma2 = abs(A - B - C)/(self.Np * self.D)
+        self.sigma2 = abs(A - B - C) / (self.Np * self.D)
 
         if self.sigma2 <= 0:
             self.sigma2 = self.tolerance / 10
 
     def get_registration_parameters(self):
+        """
+        Get the registration parameters.
+        
+        Returns
+        -------
+        self.B : array_like
+            The affine transform matrix.
+        self.t : array_like
+            The translation vector.
+        """
         return self.B, self.t
