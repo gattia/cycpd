@@ -7,6 +7,9 @@ from .expectation_maximization_registration import expectation_maximization_regi
 
 
 class affine_registration(expectation_maximization_registration):
+    """
+    
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         tic = time.time()
@@ -19,6 +22,9 @@ class affine_registration(expectation_maximization_registration):
         self.time_to_initialize_registration = toc - tic
 
     def update_transform(self):
+        """
+        Update the transform parameters.
+        """
         self.muX = np.divide(np.matmul(self.X.T, self.Pt1), self.Np)
         self.muY = np.divide(
             np.matmul(self.Y.T, self.P1), self.Np
@@ -37,6 +43,14 @@ class affine_registration(expectation_maximization_registration):
         self.err = abs(self.E - self.E_old)
 
     def transform_point_cloud(self, Y=None):
+        """
+        Transform a point cloud.
+        
+        Parameters
+        ----------
+        Y : array_like, optional
+            The point cloud to transform.
+        """
         if Y is None:
             self.TY = np.dot(self.Y, self.B.T) + self.t
             return
@@ -44,6 +58,9 @@ class affine_registration(expectation_maximization_registration):
             return np.dot(Y, self.B.T) + self.t
 
     def update_variance(self):
+        """
+        Update the variance.
+        """
         self.sigma2_prev = self.sigma2
         A = np.sum(np.square(self.X) * self.Pt1[:, None])
         B = self.Np * np.matmul(self.muX[:, None].T, self.muX[:, None])
@@ -54,4 +71,14 @@ class affine_registration(expectation_maximization_registration):
             self.sigma2 = self.tolerance / 10
 
     def get_registration_parameters(self):
+        """
+        Get the registration parameters.
+        
+        Returns
+        -------
+        self.B : array_like
+            The affine transform matrix.
+        self.t : array_like
+            The translation vector.
+        """
         return self.B, self.t
