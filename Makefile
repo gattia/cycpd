@@ -13,7 +13,7 @@ test:
 	pytest
 
 dev:
-	pip install pytest black isort twine wheel
+	pip install pytest black isort twine wheel pdoc3
 
 requirements:
 	python -m pip install -r requirements.txt
@@ -24,3 +24,8 @@ build-cython:
 build:
 	python setup.py build_ext -i --force
 	python setup.py install
+
+docs:
+	pdoc --output-dir docs/ --html --force cycpd 
+	mv docs/cycpd/* docs/
+	rm -rf docs/cycpd
