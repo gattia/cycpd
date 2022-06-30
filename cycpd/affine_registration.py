@@ -7,9 +7,8 @@ from .expectation_maximization_registration import expectation_maximization_regi
 
 
 class affine_registration(expectation_maximization_registration):
-    """
-    
-    """
+    """ """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         tic = time.time()
@@ -45,7 +44,7 @@ class affine_registration(expectation_maximization_registration):
     def transform_point_cloud(self, Y=None):
         """
         Transform a point cloud.
-        
+
         Parameters
         ----------
         Y : array_like, optional
@@ -73,7 +72,7 @@ class affine_registration(expectation_maximization_registration):
     def get_registration_parameters(self):
         """
         Get the registration parameters.
-        
+
         Returns
         -------
         self.B : array_like
