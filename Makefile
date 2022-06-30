@@ -27,3 +27,5 @@ build:
 
 docs:
 	pdoc --output-dir docs/ --html --force cycpd 
+	mv docs/cycpd/* docs/
+	rm -rf docs/cycpd
