@@ -24,7 +24,7 @@ jobs:
       # ADJUST THIS: install all dependencies (including pdoc)
       - run: make requirements dev
       # ADJUST THIS: build your documentation into docs/.
-      - run: make doc
+      - run: make docs
       # We use a custom build script for pdoc itself, ideally you just run `pdoc -o docs/ ...` here.
 
       - run: tar --directory docs/ -hcf artifact.tar .
