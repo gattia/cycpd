@@ -7,6 +7,36 @@ import cython_functions as cy
 
 
 class expectation_maximization_registration(object):
+    """
+    Expectation Maximization class
+
+    Parameters
+    ----------
+    X : numpy.ndarray
+        The target point cloud.
+    
+    Y : numpy.ndarray
+        The source point cloud.
+    
+    max_iterations : int
+        The maximum number of iterations to perform.
+    
+    tolerance : float
+        The tolerance for the error.
+    
+    w : float
+        Contribution of the uniform distribution to account for outliers.
+        Valid values span 0 (inclusive) and 1 (exclusive).
+    
+    verbose : bool
+        If True, print verbose statements to commandline.
+    
+    print_reg_params : bool
+        If True, print out the registration parameters.
+
+
+    
+    """
     def __init__(
         self,
         X,
@@ -58,6 +88,25 @@ class expectation_maximization_registration(object):
         self.print_reg_params = print_reg_params
 
     def register(self, callback=lambda **kwargs: None):
+        """
+        Register the point clouds.
+
+        Parameters
+        ----------
+        callback : function
+            A callback function that is called after each iteration.
+            This is used to print figures during the registration process.
+
+            The callback function should take the following arguments:
+                - iteration : int
+                    The current iteration.
+                - E : float
+                    The registration error.
+                - X : numpy.ndarray
+                    The original point cloud.
+                - Y : numpy.ndarray
+                    The transformed point cloud.
+        """
         tic = time.time()
         self.transform_point_cloud()
         self.sigma2 = cy.initialize_sigma2(self.X, self.Y)
@@ -117,6 +166,9 @@ class expectation_maximization_registration(object):
         raise NotImplementedError("Registration parameters should be defined in child classes.")
 
     def iterate(self):
+        """
+        Perform one iteration of the Expectation Maximization algorithm.
+        """
         self.E_old = self.E  # E = negative log-likelihood function
         tic = time.time()
         self.expectation()
@@ -147,11 +199,17 @@ class expectation_maximization_registration(object):
             print("[" + "=" * percent_done + " " * (72 - percent_done) + "]")
 
     def expectation(self):
+        """
+        Perform the Expectation step of the Expectation Maximization algorithm.
+        """
         self.P1, self.Pt1, self.PX, self.Np, self.E = cy.expectation_2(
             self.X, self.TY, self.sigma2, self.M, self.N, self.D, self.w
         )
 
     def maximization(self):
+        """
+        Perform the Maximization step of the Expectation Maximization algorithm.
+        """
         tic = time.time()
         self.update_transform()
         toc = time.time()

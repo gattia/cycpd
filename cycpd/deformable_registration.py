@@ -7,6 +7,26 @@ from .expectation_maximization_registration import expectation_maximization_regi
 
 
 def gaussian_kernel(X, beta, Y=None):
+    """
+    Compute the Gaussian kernel matrix.
+
+    Parameters
+    ----------
+    X : numpy.ndarray
+        The point cloud.
+
+    beta : float
+        The bandwidth of the Gaussian kernel.
+
+    Y : numpy.ndarray, optional
+        Second point cloud to compute the kernel matrix for. 
+        If None, the second kernel matrix is X.
+    
+    Returns
+    -------
+    G : numpy.ndarray
+        The Gaussian kernel matrix.
+    """
     if Y is None:
         Y = X
     diff = X[:, None, :] - Y[None, :, :]
@@ -16,6 +36,26 @@ def gaussian_kernel(X, beta, Y=None):
 
 
 def lowrankQS(G, num_eig, eig_fgt=False):
+    """
+    Compute the low-rank approximation of the kernel matrix.
+
+    !!!
+    This function is a placeholder for implementing the fast
+    gauss transform. It is not yet implemented.
+    !!!
+    
+    Parameters
+    ----------
+    G : numpy.ndarray
+        The gaussian kernel matrix.
+    
+    num_eig : int
+        The number of eigenvectors to use.
+    
+    eig_fgt : bool
+        If True, use the fast gauss transform to speed up registration.
+
+    """
     # if we do not use FGT we construct affinity matrix G and find the
     # first eigenvectors/values directly
 
@@ -51,6 +91,9 @@ class deformable_registration(expectation_maximization_registration):
         self.time_to_initialize_registration = toc - tic
 
     def update_transform(self):
+        """
+        Update the transform parameters.
+        """
         if self.low_rank is False:
             tic = time.time()
             A = np.dot(np.diag(self.P1), self.G) + self.alpha * self.sigma2 * np.eye(self.M)
@@ -94,6 +137,20 @@ class deformable_registration(expectation_maximization_registration):
             # code created for low_rank matrices.
 
     def transform_point_cloud(self, Y=None):
+        """
+        Transform the point cloud.
+        
+        Parameters
+        ----------
+        Y : numpy.ndarray, optional
+            The point cloud to transform. If None, the inpputted source 
+            point cloud is used.
+
+        Returns
+        -------
+        Y_transformed : numpy.ndarray
+            The transformed point cloud.            
+        """
         if self.low_rank is False:
             if Y is None:
                 self.TY = self.Y + np.dot(self.G, self.W)
@@ -110,6 +167,9 @@ class deformable_registration(expectation_maximization_registration):
                 return Y + np.matmul(G, self.W)
 
     def update_variance(self):
+        """
+        Update the variance parameters.
+        """
         self.sigma2_prev = self.sigma2
         A = np.sum(np.square(self.X) * self.Pt1[:, None])
         B = np.sum(np.square(self.TY) * self.P1[:, None])
@@ -122,4 +182,15 @@ class deformable_registration(expectation_maximization_registration):
         # self.err = abs(self.sigma2_prev - self.sigma2)
 
     def get_registration_parameters(self):
+        """
+        Get the registration parameters.
+
+        Returns
+        -------
+        self.G : numpy.ndarray
+            The Gaussian kernel matrix.
+        
+        self.W : numpy.ndarray
+            The transform parameters.
+        """
         return self.G, self.W

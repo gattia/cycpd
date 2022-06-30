@@ -8,6 +8,23 @@ from .expectation_maximization_registration import expectation_maximization_regi
 
 
 class rigid_registration(expectation_maximization_registration):
+    """
+    Rigid registration class.
+
+    Parameters
+    ----------
+    R : array_like, optional
+        The rotation matrix.
+    
+    t : array_like, optional
+        The translation vector.
+    
+    s : array_like, optional
+        The scale factor.
+    
+    scale : bool, optional
+        Whether to lean scale for the point cloud.
+    """
     def __init__(self, R=None, t=None, s=None, scale=True, *args, **kwargs):
         super().__init__(*args, **kwargs)
         tic = time.time()
@@ -34,6 +51,9 @@ class rigid_registration(expectation_maximization_registration):
         self.time_to_initialize_registration = toc - tic
 
     def update_transform(self):
+        """
+        Update the transform parameters.
+        """
         # Replaced the PyCPD muX and muY because couldnt calcl myY the same (no self.P)
         # and wanted to use the same method for both.
         self.muX = np.divide(np.matmul(self.X.T, self.Pt1), self.Np)
@@ -72,6 +92,15 @@ class rigid_registration(expectation_maximization_registration):
         )  # The above is a "normalized" alternative that was used in the Matlab code.
 
     def transform_point_cloud(self, Y=None):
+        """
+        Transform a point cloud.
+        
+        Parameters
+        ----------
+        Y : array_like, optional
+            The point cloud to transform.
+
+        """
         if Y is None:
             self.TY = self.s * np.dot(self.Y, self.R) + self.t
             return
@@ -79,6 +108,9 @@ class rigid_registration(expectation_maximization_registration):
             return self.s * np.dot(Y, self.R) + self.t
 
     def update_variance(self):
+        """
+        Update the variance.
+        """
         self.sigma2_prev = self.sigma2
         # A, B, C were just implemented to make the code reasier to read/interpret.
         # The code for self.sigma2 matches what is written in the matlab rigid example.
@@ -99,4 +131,18 @@ class rigid_registration(expectation_maximization_registration):
             self.sigma2 = self.tolerance / 10
 
     def get_registration_parameters(self):
+        """
+        Get the registration parameters.
+        
+        Returns
+        -------
+        self.s : float
+            The scale factor.
+
+        self.R : array_like
+            The rotation matrix.
+        
+        self.t : array_like
+            The translation vector.
+        """
         return self.s, self.R, self.t
