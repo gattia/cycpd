@@ -10,9 +10,9 @@ def gaussian_kernel(X, beta, Y=None):
     if Y is None:
         Y = X
     diff = X[:, None, :] - Y[None, :, :]
-    diff = diff ** 2
+    diff = diff**2
     diff = np.sum(diff, 2)
-    return np.exp(-diff / (2 * beta ** 2))
+    return np.exp(-diff / (2 * beta**2))
 
 
 def lowrankQS(G, num_eig, eig_fgt=False):

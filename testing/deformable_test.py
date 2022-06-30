@@ -78,7 +78,7 @@ def test_3d(
     TY, _ = reg.register()
 
     differences = X[:, None, :] - TY[None, :, :]
-    distances = np.sqrt(np.sum(differences ** 2, axis=2))
+    distances = np.sqrt(np.sum(differences**2, axis=2))
     min_x_dist_per_ty_point = np.min(distances, axis=0)
     sorted_distances = np.sort(min_x_dist_per_ty_point)
     worst_one_percent_error = sorted_distances[int(len(min_x_dist_per_ty_point) * 0.99)]

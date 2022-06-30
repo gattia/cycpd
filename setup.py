@@ -3,6 +3,7 @@ from setuptools import Extension, setup
 # potential way to read in version # ?
 # https://blogs.nopcode.org/brainstorm/2013-05-20-pragmatic-python-versioning-via-setuptools-and-git-tags/
 
+
 def readme():
     with open("README.MD") as f:
         return f.read()
@@ -27,7 +28,7 @@ except ImportError:
 
 setup(
     name="cycpd",
-    version='0.16',
+    version="0.16",
     description="Numpy + Cython Implementation of the Coherent Point Drift Algorithm",
     long_description=readme(),
     url="",
