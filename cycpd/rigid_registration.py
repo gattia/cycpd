@@ -15,16 +15,17 @@ class rigid_registration(expectation_maximization_registration):
     ----------
     R : array_like, optional
         The rotation matrix.
-    
+
     t : array_like, optional
         The translation vector.
-    
+
     s : array_like, optional
         The scale factor.
-    
+
     scale : bool, optional
         Whether to lean scale for the point cloud.
     """
+
     def __init__(self, R=None, t=None, s=None, scale=True, *args, **kwargs):
         super().__init__(*args, **kwargs)
         tic = time.time()
@@ -94,7 +95,7 @@ class rigid_registration(expectation_maximization_registration):
     def transform_point_cloud(self, Y=None):
         """
         Transform a point cloud.
-        
+
         Parameters
         ----------
         Y : array_like, optional
@@ -133,7 +134,7 @@ class rigid_registration(expectation_maximization_registration):
     def get_registration_parameters(self):
         """
         Get the registration parameters.
-        
+
         Returns
         -------
         self.s : float
@@ -141,7 +142,7 @@ class rigid_registration(expectation_maximization_registration):
 
         self.R : array_like
             The rotation matrix.
-        
+
         self.t : array_like
             The translation vector.
         """

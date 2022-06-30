@@ -1,8 +1,9 @@
 import time
 
-import cython_functions as cy
 import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
+
+import cython_functions as cy
 
 
 class expectation_maximization_registration(object):
@@ -13,29 +14,30 @@ class expectation_maximization_registration(object):
     ----------
     X : numpy.ndarray
         The target point cloud.
-    
+
     Y : numpy.ndarray
         The source point cloud.
-    
+
     max_iterations : int
         The maximum number of iterations to perform.
-    
+
     tolerance : float
         The tolerance for the error.
-    
+
     w : float
         Contribution of the uniform distribution to account for outliers.
         Valid values span 0 (inclusive) and 1 (exclusive).
-    
+
     verbose : bool
         If True, print verbose statements to commandline.
-    
+
     print_reg_params : bool
         If True, print out the registration parameters.
 
 
-    
+
     """
+
     def __init__(
         self,
         X,

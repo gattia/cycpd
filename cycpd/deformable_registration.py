@@ -19,9 +19,9 @@ def gaussian_kernel(X, beta, Y=None):
         The bandwidth of the Gaussian kernel.
 
     Y : numpy.ndarray, optional
-        Second point cloud to compute the kernel matrix for. 
+        Second point cloud to compute the kernel matrix for.
         If None, the second kernel matrix is X.
-    
+
     Returns
     -------
     G : numpy.ndarray
@@ -43,15 +43,15 @@ def lowrankQS(G, num_eig, eig_fgt=False):
     This function is a placeholder for implementing the fast
     gauss transform. It is not yet implemented.
     !!!
-    
+
     Parameters
     ----------
     G : numpy.ndarray
         The gaussian kernel matrix.
-    
+
     num_eig : int
         The number of eigenvectors to use.
-    
+
     eig_fgt : bool
         If True, use the fast gauss transform to speed up registration.
 
@@ -139,17 +139,17 @@ class deformable_registration(expectation_maximization_registration):
     def transform_point_cloud(self, Y=None):
         """
         Transform the point cloud.
-        
+
         Parameters
         ----------
         Y : numpy.ndarray, optional
-            The point cloud to transform. If None, the inpputted source 
+            The point cloud to transform. If None, the inpputted source
             point cloud is used.
 
         Returns
         -------
         Y_transformed : numpy.ndarray
-            The transformed point cloud.            
+            The transformed point cloud.
         """
         if self.low_rank is False:
             if Y is None:
@@ -189,7 +189,7 @@ class deformable_registration(expectation_maximization_registration):
         -------
         self.G : numpy.ndarray
             The Gaussian kernel matrix.
-        
+
         self.W : numpy.ndarray
             The transform parameters.
         """
