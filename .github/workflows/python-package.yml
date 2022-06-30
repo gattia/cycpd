@@ -5,9 +5,9 @@ name: development - build
 
 on:
   push:
-    branches: [ development, master ]
+    branches: [ development]
   pull_request:
-    branches: [ development, master ]
+    branches: [ master ]
 
 jobs:
 
