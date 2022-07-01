@@ -4,8 +4,8 @@
 name: development - build 
 
 on:
-  push:
-    branches: [ development ]
+  #push:
+    #branches: [ development ]
   pull_request:
     branches: [ master ]
 
