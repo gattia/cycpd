@@ -1,6 +1,6 @@
 # Cython-CPD
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)<br>
-![Build Status](https://github.com/gattia/cycpd/actions/workflows/python-package.yml/badge.svg?branch=main)<br>
+![Build Status](https://github.com/gattia/cycpd/actions/workflows/build-test.yml/badge.svg?branch=main)<br>
 |[Documentation](https://anthonygattiphd.com/cycpd/)|
 
 Numpy + Cython Implementation of the Coherent Point Drift Algorithm.
