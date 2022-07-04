@@ -56,7 +56,7 @@ Follow these steps to start contributing:
    $ git checkout -b development
    ```
 
-   **Do not** work on the `master` branch.
+   **Do not** work on the `main` branch.
 
 
    You can also work on another branch that is named specifically for your problem e.g., 
@@ -117,7 +117,7 @@ Follow these steps to start contributing:
 
    ```bash
    $ git fetch upstream
-   $ git rebase upstream/master
+   $ git rebase upstream/main
    ```
 
    Push the changes to the development branch on your repository:
@@ -155,7 +155,7 @@ This should be done **before** pushing your changes to your respository to ensur
 ### Tests
 
 Library tests can be found in the 
-[tests folder](https://github.com/gattia/cycpd/tree/master/testing).
+[tests folder](https://github.com/gattia/cycpd/tree/main/testing).
 
 From the root of the repository, here's how to run tests with `pytest` for the library:
 
