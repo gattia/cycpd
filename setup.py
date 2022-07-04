@@ -28,11 +28,11 @@ except ImportError:
 
 setup(
     name="cycpd",
-    version="0.19",
+    version="0.20",
     description="Numpy + Cython Implementation of the Coherent Point Drift Algorithm",
     long_description=readme(),
     long_description_content_type="text/markdown",
-    url="",
+    url="https://github.com/gattia/cycpd",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "License :: OSI Approved :: MIT License",
