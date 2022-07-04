@@ -8,6 +8,8 @@ multi_line_output = 3
 line_length = 100
 include_trailing_comma = true
 sections = ['FUTURE', 'STDLIB', 'THIRDPARTY', 'FIRSTPARTY', 'LOCALFOLDER']
+known_first_party = ["cython_functions"]
+
 
 [tool.black]
 line-length = 100
