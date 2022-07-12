@@ -29,3 +29,8 @@ docs:
 	pdoc --output-dir docs/ --html --force cycpd 
 	mv docs/cycpd/* docs/
 	rm -rf docs/cycpd
+
+clean:
+	rm -rf build dist cycpd.egg-info 
+	rm cython_functions.*
+	
