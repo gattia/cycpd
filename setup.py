@@ -13,7 +13,11 @@ try:
     from Cython.Build import cythonize
 
     ext_modules = cythonize(
-        [Extension(name="cython_functions", sources=["cycpd/cython/cython_functions.pyx"])]
+        [Extension(
+            name="cython_functions", 
+            sources=["cycpd/cython/cython_functions.pyx"],
+            include_dirs=["cycpd/cython/"]
+        )]
     )
 
 except ImportError:
@@ -28,7 +32,7 @@ except ImportError:
 
 setup(
     name="cycpd",
-    version="0.21",
+    version="0.22",
     description="Numpy + Cython Implementation of the Coherent Point Drift Algorithm",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -48,6 +52,7 @@ setup(
     ext_modules=ext_modules,
     # include_dirs=[np.get_include()],
     packages=["cycpd"],
+    # package_data={"cycpd.cython": ["cython_functions.pxd"]},
     setup_requires=["Cython>=0.29"],
     install_requires=["numpy"],
     zip_safe=False,
