@@ -13,11 +13,13 @@ try:
     from Cython.Build import cythonize
 
     ext_modules = cythonize(
-        [Extension(
-            name="cython_functions", 
-            sources=["cycpd/cython/cython_functions.pyx"],
-            include_dirs=["cycpd/cython/"]
-        )]
+        [
+            Extension(
+                name="cython_functions",
+                sources=["cycpd/cython/cython_functions.pyx"],
+                include_dirs=["cycpd/cython/"],
+            )
+        ]
     )
 
 except ImportError:
