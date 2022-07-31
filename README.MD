@@ -96,15 +96,15 @@ python knee_deformable_3D.py
 ```
 
 ## Rigid
-![](/gifs/Rigid_knee.gif)
+![](https://raw.githubusercontent.com/gattia/cycpd/main/gifs/Rigid_knee.gif)
 
 
 ## Affine
-![](/gifs/Affine_knee.gif)
+![](https://raw.githubusercontent.com/gattia/cycpd/main/gifs/Affine_knee.gif)
 
 
 ## Non-Rigid (Deformable)
-![](/gifs/Deformable_knee.gif)
+![](https://raw.githubusercontent.com/gattia/cycpd/main/gifs/Deformable_knee.gif)
 
 
 # Tests
