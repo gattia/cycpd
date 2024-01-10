@@ -34,12 +34,16 @@ exclude = '''
 # Information needed for cibuildwheel
 [tool.cibuildwheel]
 # build options: https://cibuildwheel.readthedocs.io/en/stable/options/#build-selection
-build = ["cp37-*", "cp38-*", "cp39-*", "cp310-*"]
+build = ["cp37-*", "cp38-*", "cp39-*", "cp310-*", "cp311-*]
 skip = ["*-win32", "*i686", "*aarch64", "*ppc64le", "*s390x", "*musllinux*"]
 
 # testing info: https://cibuildwheel.readthedocs.io/en/stable/options/#testing
 test-command = "pytest {project}"
 test-requires = ["pytest"]
+
+[tool.cibuildwheel.macos]
+archs-macos = ["universal2", "x86_64"]
+
 
 # https://github.com/pypa/setuptools_scm/
 # [tool.setuptools_scm]
