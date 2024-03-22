@@ -36,5 +36,5 @@ docs:
 
 clean:
 	rm -rf build dist cycpd.egg-info 
-	rm cython_functions.*
+	rm cycpd/cython/cython_functions.c
 	
