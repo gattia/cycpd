@@ -41,11 +41,11 @@ jobs:
       # build source distribution for versions wheels arent build. 
       - name: Build source distribution
         run: |
-          python setup.py sdist -d wheelhouse
+          python -m build
       
       - uses: actions/upload-artifact@v2
         with:
-          path: ./wheelhouse/*.tar.gz
+          path: ./dist/*.tar.gz
     
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
