@@ -191,6 +191,10 @@ def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N,
 
             for d in range(D):
                 Px_view[m, d] += temp_x_view[d] * P_view[m]
+        
+        if den <= 0:
+            den = np.finfo(float).eps
+            
         E += -c_log(den)
 
     Np = 0
