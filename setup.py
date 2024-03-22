@@ -55,7 +55,7 @@ setup(
     # include_dirs=[np.get_include()],
     packages=["cycpd"],
     # package_data={"cycpd.cython": ["cython_functions.pxd"]},
-    setup_requires=["Cython>=0.29"],
+    setup_requires=["Cython>=0.29", "setuptools"],
     install_requires=["numpy"],
     zip_safe=False,
 )
