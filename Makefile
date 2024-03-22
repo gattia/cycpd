@@ -13,17 +13,21 @@ test:
 	pytest
 
 dev:
-	pip install pytest black isort twine wheel pdoc3
+	pip install pytest black isort twine wheel pdoc3 build
 
 requirements:
 	python -m pip install -r requirements.txt
 
 build-cython:
-	python setup.py build_ext -i --force
+	#python setup.py build_ext -i --force
+	pip install . --no-cache-dir --force-reinstall
+
 
 build:
-	python setup.py build_ext -i --force
-	python setup.py install
+	# python setup.py build_ext -i --force
+	# python setup.py install
+	pip install . --no-cache-dir --force-reinstall
+
 
 docs:
 	pdoc --output-dir docs/ --html --force cycpd 
@@ -32,5 +36,5 @@ docs:
 
 clean:
 	rm -rf build dist cycpd.egg-info 
-	rm cython_functions.*
+	rm cycpd/cython/cython_functions.c
 	

@@ -1,4 +1,5 @@
 # cython: infer_types=True
+# cython: language_level=3
 import numpy as np
 
 cimport cython
@@ -169,6 +170,7 @@ def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N,
     Px= np.zeros((M, D), dtype=dtype)
     cdef my_type[:, :] Px_view = Px
 
+    E = 0
 
     for n in range(N):
         den = 0
@@ -181,6 +183,10 @@ def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N,
             P_view[m] = c_exp(tmp_total/ksig)
             den += P_view[m]
         den += w_tmp
+
+        if den == 0:
+            den = np.finfo(float).eps
+        
         Pt1_view[n] = 1-w_tmp/den
 
         for d in range(D):
@@ -191,11 +197,18 @@ def expectation_2(my_type[:,:] X, my_type[:,:] TY, my_type sigma2, int M, int N,
 
             for d in range(D):
                 Px_view[m, d] += temp_x_view[d] * P_view[m]
+        
+        if den <= 0:
+            den = np.finfo(float).eps
+            
         E += -c_log(den)
 
     Np = 0
     for m in range(M):
         Np += P1_view[m]
+
+    if sigma2 <= 0:
+        sigma2 = np.finfo(float).eps
 
     E += D * Np * c_log(sigma2)/2
 
