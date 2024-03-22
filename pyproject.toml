@@ -41,6 +41,10 @@ skip = ["*-win32", "*i686", "*aarch64", "*ppc64le", "*s390x", "*musllinux*"]
 test-command = "pytest {project}"
 test-requires = ["pytest"]
 
+[tool.cibuildwheel.macos]
+archs-macos = ["universal2", "x86_64"]
+
+
 # https://github.com/pypa/setuptools_scm/
 # [tool.setuptools_scm]
 

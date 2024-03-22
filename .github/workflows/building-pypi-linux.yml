@@ -48,22 +48,19 @@ jobs:
           path: ./wheelhouse/*.tar.gz
     
   build_wheels:
-    name: Build wheels
+    name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-2019, macos-latest]     
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v3
-        name: Install Python
-        with:
-          python-version: '3.7'
       
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.7.0
+        run: python -m pip install cibuildwheel==2.16.2
 
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
@@ -71,8 +68,9 @@ jobs:
       # - name: Build wheels
       #   uses: pypa/cibuildwheel@v2.2.2
       
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
+            name: cibw-wheels-${{ matrix.os }}
             path: ./wheelhouse/*.whl
   
   upload_pypi:
@@ -80,7 +78,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: artifact
           path: dist
