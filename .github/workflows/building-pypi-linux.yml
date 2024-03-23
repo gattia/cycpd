@@ -43,8 +43,9 @@ jobs:
         run: |
           python -m build
       
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
+          name: pypi-dist
           path: ./dist/*.tar.gz
     
   build_wheels:
@@ -68,7 +69,7 @@ jobs:
       # - name: Build wheels
       #   uses: pypa/cibuildwheel@v2.2.2
       
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         with:
             name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
             path: ./wheelhouse/*.whl
@@ -78,9 +79,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v3
         with:
-          name: artifact
+          name: 
           path: dist
       
       - uses: pypa/gh-action-pypi-publish@v1.4.2
