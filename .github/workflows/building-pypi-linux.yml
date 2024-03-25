@@ -53,7 +53,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-2019, macos-latest]     
+        # macos-13 = intel macos, macos-14 = arm macos
+        os: [ubuntu-latest, windows-2019, macos-13, macos-14]     
     
     steps:
       - uses: actions/checkout@v4
